@@ -20,3 +20,25 @@
 .App-link {
   color: #09d3ac;
 }
+
+td,
+th {
+  padding-left: 1em;
+}
+
+tr {
+  border-bottom: 1px gray solid;
+}
+.numped {
+  text-align: center;
+  color: red;
+}
+
+thead,
+tfoot {
+  background-color: gray;
+}
+
+table {
+  width: 90%;
+}
