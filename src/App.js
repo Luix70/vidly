@@ -3,7 +3,11 @@ import React from "react";
 import "./App.css";
 import Tablaclientes from "./components/Tablaclientes";
 function App() {
-  return <Tablaclientes />;
+  return (
+    <main>
+      <Tablaclientes />
+    </main>
+  );
 }
 
 export default App;

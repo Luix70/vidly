@@ -2,25 +2,22 @@ import React, { Component } from "react";
 import getClientes from "../services/fakeClientes";
 class Tablaclientes extends Component {
   state = {
-    listaclientes: [...getClientes().representantes[0].clientes],
-    numclientes: 0
+    listaclientes: [...getClientes().representantes[0].clientes]
   };
   render() {
     return (
-      <main className="container">
-        <h1>
-          {this.state.listaclientes.length === 0 && "No hay clientes "}
-
-          {this.state.listaclientes.length > 0 &&
-            "Hay " + this.state.listaclientes.length + " clientes"}
-        </h1>
-        <table>
-          <thead>
+      <div className="table-responsive">
+        <table className="table   table-bordered table-dark table-striped table-sm">
+          <caption>
+            {this.state.listaclientes.length === 0 && "No hay clientes "}
+            {this.state.listaclientes.length > 0 &&
+              "Hay " + this.state.listaclientes.length + " clientes"}
+          </caption>
+          <thead className="thead-dark">
             <tr>
-              <th>Código</th>
+              <th scope="col">Código</th>
               <th>Razón Social</th>
-              <th>Pedidos</th>
-
+              <th className="numped">Pedidos</th>
               <th>&nbsp;</th>
             </tr>
           </thead>
@@ -34,9 +31,9 @@ class Tablaclientes extends Component {
                   <em> {cli.rzs}</em>
                 </td>
                 <td className="numped">{cli.totalDocumentos}</td>
-                <td>
+                <td className="numped">
                   <button
-                    className="badge"
+                    className="btn btn-danger btn-sm"
                     onClick={() => this.borrarCliente(cli.codigo)}
                   >
                     borrar
@@ -46,14 +43,13 @@ class Tablaclientes extends Component {
             ))}
           </tbody>
           <tfoot>
-            <tr>
+            <tr className="table-danger">
               <td>&nbsp;</td>
               <td>&nbsp;</td>
               <td>&nbsp;</td>
-
-              <td>
+              <td className="numped">
                 <button
-                  className="badge"
+                  className="btn btn-sm btn-primary"
                   onClick={() => this.recargarClientes()}
                 >
                   recargar
@@ -62,7 +58,7 @@ class Tablaclientes extends Component {
             </tr>
           </tfoot>
         </table>
-      </main>
+      </div>
     );
   }
 
@@ -82,13 +78,8 @@ class Tablaclientes extends Component {
   }
 
   recargarClientes() {
-    // console.log("recargamos todos los clientes ");
-    var nuevaListaClientes = [...getClientes().representantes[0].clientes];
-    // console.log("listaclientes", this.state.listaclientes);
-    // console.log("nuevalistaClientes", nuevaListaClientes);
     this.setState({
-      numclientes: 0,
-      listaclientes: nuevaListaClientes
+      listaclientes: [...getClientes().representantes[0].clientes]
     });
   }
 }
