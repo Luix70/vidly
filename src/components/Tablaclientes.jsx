@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import getClientes from "../services/fakeClientes";
+import Cliente from "./Cliente";
+
 class Tablaclientes extends Component {
   state = {
     listaclientes: [...getClientes().representantes[0].clientes]
@@ -7,7 +9,7 @@ class Tablaclientes extends Component {
   render() {
     return (
       <div className="table-responsive">
-        <table className="table   table-bordered table-dark table-striped table-sm">
+        <table className="table   table-dark  table-sm">
           <caption>
             {this.state.listaclientes.length === 0 && "No hay clientes "}
             {this.state.listaclientes.length > 0 &&
@@ -23,23 +25,11 @@ class Tablaclientes extends Component {
           </thead>
           <tbody>
             {this.state.listaclientes.map(cli => (
-              <tr key={cli.codigo}>
-                <td>
-                  <strong>{cli.codigo}</strong>
-                </td>
-                <td>
-                  <em> {cli.rzs}</em>
-                </td>
-                <td className="numped">{cli.totalDocumentos}</td>
-                <td className="numped">
-                  <button
-                    className="btn btn-danger btn-sm"
-                    onClick={() => this.borrarCliente(cli.codigo)}
-                  >
-                    borrar
-                  </button>
-                </td>
-              </tr>
+              <Cliente
+                key={cli.codigo}
+                cliente={cli}
+                onDelete={this.borrarCliente}
+              />
             ))}
           </tbody>
           <tfoot>
@@ -62,7 +52,7 @@ class Tablaclientes extends Component {
     );
   }
 
-  borrarCliente(cod) {
+  borrarCliente = cod => {
     // console.log("eliminamos el cliente " + cod);
 
     for (var i = 0; i < this.state.listaclientes.length; i++) {
@@ -75,7 +65,7 @@ class Tablaclientes extends Component {
     this.setState({
       numclientes: 0
     });
-  }
+  };
 
   recargarClientes() {
     this.setState({
