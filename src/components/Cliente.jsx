@@ -1,12 +1,8 @@
 import React, { Component } from "react";
 import Operacion from "./Operacion";
-class Cliente extends Component {
-  state = { cliente: this.props.cliente };
-  render() {
-    var cli = this.state.cliente;
-
-    return (
-      <React.Fragment>
+const Cliente = ({cliente:cli, onDelete}) => {
+    return ( 
+    <React.Fragment>
         <tr key={cli.codigo}>
           <td>
             <strong>{cli.codigo}</strong>
@@ -18,7 +14,7 @@ class Cliente extends Component {
           <td className="numped">
             <button
               className="btn btn-danger btn-sm"
-              onClick={() => this.props.onDelete(cli.codigo)}
+              onClick={() => onDelete(cli.codigo)}
             >
               borrar
             </button>
@@ -42,8 +38,8 @@ class Cliente extends Component {
           </td>
         </tr>
       </React.Fragment>
-    );
-  }
+   );
 }
-
+ 
 export default Cliente;
+
