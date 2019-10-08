@@ -47,3 +47,7 @@
   width: 6em;
   text-align: right;
 }
+
+.table-secondary {
+  color: black;
+}

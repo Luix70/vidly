@@ -9,7 +9,7 @@ const TablaClientes = ({
   return (
     <div className="table-responsive">
       <table className="table   table-dark  table-sm ">
-        <thead className="thead-dark">
+        <thead className="thead-light">
           <tr>
             <th scope="col">Código</th>
             <th>Razón Social</th>
@@ -29,7 +29,7 @@ const TablaClientes = ({
           ))}
         </tbody>
         <tfoot>
-          <tr className="bg-primary">
+          <tr className="table-secondary">
             <td colSpan="3">
               {" "}
               {listaclientes.length === 0 && "No hay clientes "}

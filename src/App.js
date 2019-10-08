@@ -12,7 +12,12 @@ class App extends Component {
   render() {
     return (
       <main>
-        <NavBar />
+        <NavBar
+          totalClientes={this.state.listaclientes.length}
+          totalRepresentantes={[...getClientes().representantes].length}
+          totalPedidos="Muchos"
+          totalFacturas="Incalculable"
+        />
         <Tablaclientes
           listaclientes={this.state.listaclientes}
           onBorrarCliente={this.borrarCliente}
