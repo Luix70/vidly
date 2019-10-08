@@ -1,29 +1,24 @@
 import React from "react";
 // al ser una SFC no se requiere importar Component
 import Operacion from "./Operacion";
-const Cliente = ({ cliente: cli, onDelete }) => {
+const Cliente = ({ cliente: cli }) => {
   return (
     <React.Fragment>
       <tr key={cli.codigo}>
-        <td>
+        <td className="codCliente">
           <strong>{cli.codigo}</strong>
         </td>
         <td>
-          <em> {cli.rzs}</em>
+          <em>
+            {" "}
+            {cli.rzs} ( {cli.poblacion})
+          </em>
         </td>
-        <td className="numped">{cli.totalDocumentos}</td>
-        <td className="numped">
-          <button
-            className="btn btn-danger btn-sm"
-            onClick={() => onDelete(cli.codigo)}
-          >
-            borrar
-          </button>
-        </td>
+        <td className="numped">Docs: {cli.totalDocumentos}</td>
+        <td className="numped">&nbsp;</td>
       </tr>
       <tr key={cli.codigo + "-ops"}>
-        <td>&nbsp;</td>
-        <td colSpan="3">
+        <td colSpan="4">
           <table className="table table-dark table-sm table-borderless">
             <tbody>
               {cli.documentos.map(doc => (

@@ -21,6 +21,9 @@
   color: #09d3ac;
 }
 
+.codCliente {
+  width: 4em;
+}
 .numped {
   width: 6em;
   text-align: right;

@@ -27,10 +27,7 @@ const Operacion = ({ documento: doc }) => {
           <table className="table">
             <tbody>
               {doc.lineas.map(linea => (
-                <Linea
-                  key={linea.tipodoc + linea.codigodoc + linea.linea}
-                  linea={linea}
-                />
+                <Linea key={linea.codLinea} linea={linea} />
               ))}
             </tbody>
           </table>

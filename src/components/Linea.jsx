@@ -3,7 +3,7 @@ import React from "react";
 const Linea = ({ linea }) => {
   return (
     <React.Fragment>
-      <tr key={linea.tipodoc + linea.codigodoc + linea.linea}>
+      <tr>
         <td className="celdaCoart">{linea.coart}</td>
         <td className="celdaDesc">{linea.descripcion}</td>
         <td className="celdaPrecio">
