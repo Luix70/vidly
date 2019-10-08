@@ -22,5 +22,28 @@
 }
 
 .numped {
-  text-align: center;
+  width: 6em;
+  text-align: right;
+}
+
+.celdaDocumento {
+  width: 7em;
+}
+
+.celdaFecha {
+  width: 10em;
+}
+
+.celdaReferencia {
+  font-style: italic;
+}
+
+.celdaEtiqImporte {
+  width: 3.5em;
+  text-align: right;
+}
+
+.celdaImporte {
+  width: 6em;
+  text-align: right;
 }

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Tablaclientes from "./components/Tablaclientes.jsx";
 import getClientes from "./services/fakeClientes";
+import NavBar from "./components/NavBar";
 
 class App extends Component {
   state = {
@@ -11,6 +12,7 @@ class App extends Component {
   render() {
     return (
       <main>
+        <NavBar />
         <Tablaclientes
           listaclientes={this.state.listaclientes}
           onBorrarCliente={this.borrarCliente}

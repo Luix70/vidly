@@ -8,7 +8,7 @@ const TablaClientes = ({
 }) => {
   return (
     <div className="table-responsive">
-      <table className="table   table-dark  table-sm">
+      <table className="table   table-dark  table-sm ">
         <thead className="thead-dark">
           <tr>
             <th scope="col">Código</th>

@@ -24,14 +24,12 @@ const Cliente = ({ cliente: cli, onDelete }) => {
       <tr key={cli.codigo + "-ops"}>
         <td>&nbsp;</td>
         <td colSpan="3">
-          <table className="table table-dark table-sm">
-            <thead></thead>
+          <table className="table table-dark table-sm table-borderless">
             <tbody>
               {cli.documentos.map(doc => (
                 <Operacion key={doc.tipodoc + doc.codigodoc} documento={doc} />
               ))}
             </tbody>
-            <tfoot></tfoot>
           </table>
         </td>
       </tr>
