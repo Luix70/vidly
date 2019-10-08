@@ -1,4 +1,5 @@
 import React from "react";
+import Linea from "./Linea";
 // al ser una SFC no se requiere importar Component
 const Operacion = ({ documento: doc }) => {
   return (
@@ -17,12 +18,23 @@ const Operacion = ({ documento: doc }) => {
         <td className="celdaReferencia">Ref: {doc.referencia}</td>
         <td className="celdaEtiqImporte">Bruto: </td>
         <td className="celdaImporte">
-          <b>{doc.Importebruto} </b>€
+          <b>{Number.parseFloat(doc.Importebruto).toFixed(2)} </b>€
         </td>
       </tr>
       <tr>
         <td>&nbsp;</td>
-        <td colSpan="4" className="lineas"></td>
+        <td colSpan="4" className="lineas">
+          <table className="table">
+            <tbody>
+              {doc.lineas.map(linea => (
+                <Linea
+                  key={linea.tipodoc + linea.codigodoc + linea.linea}
+                  linea={linea}
+                />
+              ))}
+            </tbody>
+          </table>
+        </td>
       </tr>
     </React.Fragment>
   );

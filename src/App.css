@@ -66,3 +66,25 @@
 .tipodoc {
   font-weight: bolder;
 }
+
+.celdaCoart {
+  color: #dda;
+  width: 3rem;
+  font-weight: bolder;
+}
+
+.celdaDesc {
+  color: #ccc;
+}
+
+.celdaPrecio {
+  width: 3rem;
+  text-align: right;
+  color: gray;
+}
+
+.celdaRef_linea {
+  color: #add;
+  font-style: italic;
+  font-size: 0.8rem;
+}
