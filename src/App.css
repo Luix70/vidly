@@ -47,3 +47,22 @@
   width: 6em;
   text-align: right;
 }
+
+.table-secondary {
+  color: black;
+}
+
+.tipodoc-P {
+  color: rgb(150, 150, 255);
+}
+
+.tipodoc-A {
+  color: red;
+}
+
+.tipodoc-F {
+  color: gray;
+}
+.tipodoc {
+  font-weight: bolder;
+}

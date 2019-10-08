@@ -5,7 +5,10 @@ const Operacion = ({ documento: doc }) => {
     <React.Fragment>
       <tr>
         <td className="celdaDocumento">
-          {doc.tipodoc} {doc.codigodoc}{" "}
+          <span className={"tipodoc tipodoc-" + doc.tipodoc}>
+            {doc.tipodoc}
+          </span>{" "}
+          {doc.codigodoc}
         </td>
         <td className="celdaFecha">
           Fecha:

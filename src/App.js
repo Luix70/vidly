@@ -6,13 +6,21 @@ import NavBar from "./components/NavBar";
 
 class App extends Component {
   state = {
-    listaclientes: [...getClientes().representantes[0].clientes]
+    listaclientes: [
+      ...getClientes().representantes[0].clientes,
+      ...getClientes().representantes[1].clientes
+    ]
   };
 
   render() {
     return (
       <main>
-        <NavBar />
+        <NavBar
+          totalClientes={this.state.listaclientes.length}
+          totalRepresentantes={[...getClientes().representantes].length}
+          totalPedidos="Muchos"
+          totalFacturas="Incalculable"
+        />
         <Tablaclientes
           listaclientes={this.state.listaclientes}
           onBorrarCliente={this.borrarCliente}
@@ -39,7 +47,10 @@ class App extends Component {
 
   recargarClientes = () => {
     this.setState({
-      listaclientes: [...getClientes().representantes[0].clientes]
+      listaclientes: [
+        ...getClientes().representantes[0].clientes,
+        ...getClientes().representantes[1].clientes
+      ]
     });
   };
 }
