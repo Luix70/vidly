@@ -8,7 +8,7 @@ class NavBar extends Component {
       totalFacturas
     } = this.props;
     return (
-      <nav className="navbar navbar-dark bg-primary">
+      <nav className="navbar navbar-dark bg-dark">
         <a className="navbar-brand" href=".">
           Representantes{" "}
           <span className="badge badge-pill badge-secondary">

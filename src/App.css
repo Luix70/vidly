@@ -91,3 +91,32 @@
   font-style: italic;
   font-size: 0.8rem;
 }
+
+.smallprint {
+  font-size: 0.7rem;
+  padding: 0 !important;
+}
+
+.smallprint .badge {
+  font-size: 0.8rem;
+}
+
+.menu-lateral {
+  background-color: #ddd !important;
+  color: black;
+}
+
+.col-3 {
+  background-color: #ddd;
+
+  margin: 0px -15px 0 0;
+}
+
+.encab-representante {
+  background-color: #ddd !important;
+  color: black;
+}
+
+.list-group {
+  border-top: 1px solid black;
+}

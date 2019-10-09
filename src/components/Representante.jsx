@@ -3,11 +3,11 @@ import Cliente from "./Cliente";
 const Representante = ({ repres }) => {
   var listaclientes = repres.clientes;
   return (
-    <table className="table table-dark">
+    <table className="table table-dark ">
       <thead>
-        <tr>
+        <tr className="encab-representante">
           <td colSpan="4">
-            <h1>{repres.nombre}</h1>
+            <h3>{repres.nombre}</h3>
           </td>
         </tr>
       </thead>

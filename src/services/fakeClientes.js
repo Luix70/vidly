@@ -1,3 +1,19 @@
+import _ from "lodash";
+export default function getClientes(repre) {
+
+    if (repre === undefined) return clientes;
+
+    var fclientes = {...clientes}
+    //console.log (clientes.representantes.filter(item => repre.codrep === item.codrep))
+    fclientes.representantes = [...clientes.representantes.filter(item => repre.codrep === item.codrep) ]
+    return fclientes;
+  }
+
+export function getRepres(){
+    return  clientes.representantes.map((repre)=>{ return _.pick(repre,["codrep", "nombre", "totalClientes"])});
+}
+    
+
 const clientes = {
     "consulta": "SELECT * FROM listadopedidos",
     "FechaConsulta": "08/10/2019 16:39",
@@ -47027,6 +47043,4 @@ const clientes = {
     "errorcode": null
     };
 
-export default function getClientes() {
-  return clientes;
-}
+

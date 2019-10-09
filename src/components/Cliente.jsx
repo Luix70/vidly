@@ -4,7 +4,7 @@ import Operacion from "./Operacion";
 const Cliente = ({ cliente: cli }) => {
   return (
     <React.Fragment>
-      <tr key={cli.codigo}>
+      <tr className="bg-success" key={cli.codigo}>
         <td className="codCliente">
           <strong>{cli.codigo}</strong>
         </td>
