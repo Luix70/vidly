@@ -18,13 +18,20 @@ class App extends Component {
           totalPedidos="Muchos"
           totalFacturas="Incalculable"
         />
-        {this.state.resultConsulta.representantes.map(repre => (
-          <Representante
-            repres={repre}
-            onBorrarCliente={this.borrarCliente}
-            onRecargarClientes={this.recargarClientes}
-          />
-        ))}
+        <div className="row">
+          <div className="col-3"></div>
+          <div className="col">
+            {" "}
+            {this.state.resultConsulta.representantes.map(repre => (
+              <Representante
+                key={repre.codrep}
+                repres={repre}
+                onBorrarCliente={this.borrarCliente}
+                onRecargarClientes={this.recargarClientes}
+              />
+            ))}
+          </div>
+        </div>
       </main>
     );
   }
