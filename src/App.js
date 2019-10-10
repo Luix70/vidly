@@ -21,7 +21,7 @@ class App extends Component {
 
   render() {
     return (
-      <main>
+      <main style={{ backgroundColor: "#ddd" }}>
         <NavBar
           //totalClientes={this.state.listaclientes.length}
           totalRepresentantes={
@@ -39,7 +39,7 @@ class App extends Component {
               itemList={this.state.listaRepresentantes}
             />
           </div>
-          <div className="col">
+          <div className="col" style={{ backgroundColor: "#d6d8db" }}>
             {" "}
             {this.state.resultConsulta === null ? (
               <span>&nbsp;</span>
