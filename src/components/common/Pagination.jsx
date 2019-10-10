@@ -17,11 +17,6 @@ const Pagination = ({ itemCount, currentPage, itemsPerPage, pageClicked }) => {
           </a>
         </li>
         {pages.map(page => {
-          console.log(
-            page,
-            currentPage,
-            page === currentPage ? "page-link active" : "page-link"
-          );
           return (
             <li
               key={page}
@@ -51,7 +46,7 @@ Pagination.propTypes = {
   itemCount: PropTypes.number.isRequired,
   currentPage: PropTypes.number.isRequired,
   itemsPerPage: PropTypes.number.isRequired,
-  pageClicked: PropTypes.number.isRequired
+  pageClicked: PropTypes.func.isRequired
 };
 
 export default Pagination;

@@ -3,7 +3,7 @@ import Pagination from "./Pagination";
 import paginate from "../utils/paginate";
 
 const ListGroup = ({ itemList, handleClick }) => {
-  const itemsToShow = paginate(itemList, 1, 10);
+  const itemsToShow = paginate(itemList, 2, 10);
   return (
     <React.Fragment>
       <ul
@@ -33,8 +33,8 @@ const ListGroup = ({ itemList, handleClick }) => {
         <li className="pagination">
           <Pagination
             itemCount={itemList.length}
-            currentPage="1"
-            itemsPerPage="15"
+            currentPage={3}
+            itemsPerPage={10}
             pageClicked={handlePageClicked}
           />
         </li>
