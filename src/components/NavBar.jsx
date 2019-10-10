@@ -1,4 +1,6 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from "react";
+
 class NavBar extends Component {
   render() {
     const {
@@ -9,27 +11,27 @@ class NavBar extends Component {
     } = this.props;
     return (
       <nav className="navbar navbar-dark bg-dark">
-        <a className="navbar-brand" href=".">
-          Representantes{" "}
+        <a className="navbar-brand" href="#">
+          Representantes
           <span className="badge badge-pill badge-secondary">
             {totalRepresentantes}
           </span>
         </a>
-        <a className="navbar-brand" href=".">
-          Clientes{" "}
+        <a className="navbar-brand" href="#">
+          Clientes
           <span className="badge badge-pill badge-secondary">
             {totalClientes}
           </span>
         </a>
 
-        <a className="navbar-brand" href=".">
-          Pedidos{" "}
+        <a className="navbar-brand" href="#">
+          Pedidos
           <span className="badge badge-pill badge-secondary">
             {totalPedidos}
           </span>
         </a>
-        <a className="navbar-brand" href=".">
-          Importe{" "}
+        <a className="navbar-brand" href="#">
+          Importe
           <span className="badge badge-pill badge-secondary">
             {totalFacturas}
           </span>
