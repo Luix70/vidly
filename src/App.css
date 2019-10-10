@@ -102,18 +102,18 @@
 }
 
 .menu-lateral {
-  background-color: #ddd !important;
+  background-color: #d6d8db !important;
   color: black;
 }
 
 .col-3 {
-  background-color: #ddd;
+  background-color: #d6d8db;
 
   margin: 0px -15px 0 0;
 }
 
 .encab-representante {
-  background-color: #ddd !important;
+  background-color: #d6d8db !important;
   color: black;
 }
 
@@ -125,4 +125,9 @@
   text-align: center;
   background-color: white;
   padding: 0.2rem 0 0.2rem 1.5rem !important;
+}
+
+.disabled .page-link {
+  visibility: hidden;
+  background-color: red !important;
 }

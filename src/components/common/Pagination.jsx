@@ -10,7 +10,10 @@ const Pagination = ({ itemCount, currentPage, itemsPerPage, pageClicked }) => {
   return (
     <nav aria-label="Page navigation example">
       <ul className="pagination">
-        <li key="0" className="page-item">
+        <li
+          key="0"
+          className={"page-item " + (currentPage === 1 ? "disabled" : "")}
+        >
           <a href="#" className="page-link" aria-label="Previous">
             <span aria-hidden="true">&laquo;</span>
             <span className="sr-only">Previous</span>
@@ -31,7 +34,12 @@ const Pagination = ({ itemCount, currentPage, itemsPerPage, pageClicked }) => {
             </li>
           );
         })}
-        <li key={pages + 1} className="page-item">
+        <li
+          key={pages + 1}
+          className={
+            "page-item " + (currentPage === numpages ? "disabled" : "")
+          }
+        >
           <a href="#" className="page-link" aria-label="Next">
             <span aria-hidden="true">&raquo;</span>
             <span className="sr-only">Next</span>

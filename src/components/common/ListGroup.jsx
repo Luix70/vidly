@@ -1,50 +1,63 @@
-import React from "react";
+import React, { Component } from "react";
 import Pagination from "./Pagination";
 import paginate from "../utils/paginate";
 
-const ListGroup = ({ itemList, handleClick }) => {
-  const itemsToShow = paginate(itemList, 2, 10);
-  return (
-    <React.Fragment>
-      <ul
-        className="list-group list-group-flush  "
-        style={{ cursor: "pointer" }}
-      >
-        <li
-          onClick={() => handleClick()}
-          key={"0"}
-          className="list-group-item d-flex justify-content-between align-items-center menu-lateral"
-          style={{ fontSize: "1.1rem", fontWeight: "bolder" }}
-        >
-          VER TODOS
-        </li>
-        {itemsToShow.map(item => (
-          <li
-            onClick={() => handleClick(item)}
-            key={item.codrep}
-            className="list-group-item d-flex justify-content-between align-items-center menu-lateral"
-          >
-            {item.nombre}
-            <span className="badge badge-primary badge-pill">
-              {item.totalClientes}
-            </span>
-          </li>
-        ))}
-        <li className="pagination">
-          <Pagination
-            itemCount={itemList.length}
-            currentPage={3}
-            itemsPerPage={10}
-            pageClicked={handlePageClicked}
-          />
-        </li>
-      </ul>
-    </React.Fragment>
-  );
-};
+class ListGroup extends Component {
+  state = {
+    paginaActual: 3,
+    itemsPerPage: 15,
+    itemList: [],
+    handleClick: {}
+  };
 
-const handlePageClicked = page => {
-  console.log(page);
-};
+  handlePageClicked = page => {
+    this.setState({ paginaActual: page });
+  };
+
+  render() {
+    const { itemList, handleClick } = this.props;
+    const { paginaActual, itemsPerPage } = this.state;
+
+    const itemsToShow = paginate(itemList, paginaActual, itemsPerPage);
+
+    return (
+      <React.Fragment>
+        <ul
+          className="list-group list-group-flush  "
+          style={{ cursor: "pointer" }}
+        >
+          <li
+            onClick={() => handleClick()}
+            key={"0"}
+            className="list-group-item d-flex justify-content-between align-items-center menu-lateral"
+            style={{ fontSize: "1.1rem", fontWeight: "bolder" }}
+          >
+            VER TODOS
+          </li>
+          {itemsToShow.map(item => (
+            <li
+              onClick={() => handleClick(item)}
+              key={item.codrep}
+              className="list-group-item d-flex justify-content-between align-items-center menu-lateral"
+            >
+              {item.nombre}
+              <span className="badge badge-primary badge-pill">
+                {item.totalClientes}
+              </span>
+            </li>
+          ))}
+          <li className="pagination">
+            <Pagination
+              itemCount={itemList.length}
+              currentPage={paginaActual}
+              itemsPerPage={itemsPerPage}
+              pageClicked={this.handlePageClicked}
+            />
+          </li>
+        </ul>
+      </React.Fragment>
+    );
+  }
+}
 
 export default ListGroup;
