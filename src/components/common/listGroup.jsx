@@ -1,22 +1,22 @@
 import React, { Component } from "react";
+import Pagination from "./Pagination";
 import paginate from "../utils/paginate";
-import PropTypes from "prop-types";
 
 class ListGroup extends Component {
   state = {
+    paginaActual: 3,
+    itemsPerPage: 15,
     itemList: [],
     handleClick: {}
   };
 
+  handlePageClicked = page => {
+    this.setState({ paginaActual: page });
+  };
+
   render() {
-    const {
-      itemList,
-      handleClick,
-      itemID,
-      itemValue,
-      paginaActual,
-      itemsPerPage
-    } = this.props;
+    const { itemList, handleClick } = this.props;
+    const { paginaActual, itemsPerPage } = this.state;
 
     const itemsToShow = paginate(itemList, paginaActual, itemsPerPage);
 
@@ -26,6 +26,14 @@ class ListGroup extends Component {
           className="list-group list-group-flush  "
           style={{ cursor: "pointer" }}
         >
+          <li className="pagination">
+            <Pagination
+              itemCount={itemList.length}
+              currentPage={paginaActual}
+              itemsPerPage={itemsPerPage}
+              pageClicked={this.handlePageClicked}
+            />
+          </li>
           <li
             onClick={() => handleClick()}
             key={"0"}
@@ -37,10 +45,13 @@ class ListGroup extends Component {
           {itemsToShow.map(item => (
             <li
               onClick={() => handleClick(item)}
-              key={item[itemID]}
+              key={item.codrep}
               className="list-group-item d-flex justify-content-between align-items-center menu-lateral"
             >
-              {item[itemValue]}
+              {item.nombre}
+              <span className="badge badge-primary badge-pill">
+                {item.totalClientes}
+              </span>
             </li>
           ))}
         </ul>
@@ -49,12 +60,4 @@ class ListGroup extends Component {
   }
 }
 
-ListGroup.propTypes = {
-  itemList: PropTypes.array.isRequired,
-  handleClick: PropTypes.func.isRequired,
-  itemID: PropTypes.string.isRequired,
-  itemValue: PropTypes.string.isRequired,
-  paginaActual: PropTypes.number.isRequired,
-  itemsPerPage: PropTypes.number.isRequired
-};
 export default ListGroup;
