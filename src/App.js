@@ -11,10 +11,15 @@ class App extends Component {
     resultConsulta: null,
     listaRepresentantes: [],
     paginaActual: 1,
-    itemsPerPage: 10
+    itemsPerPage: 10,
+    selectedRepre: 0
   };
   handleListGroupClick = repre => {
-    this.setState({ resultConsulta: getClientes(repre) });
+    console.log(repre);
+    this.setState({
+      resultConsulta: getClientes(repre),
+      selectedRepre: repre.codrep
+    });
   };
 
   handlePageClicked = page => {
@@ -52,7 +57,8 @@ class App extends Component {
             </div>
             <div className="row">
               <ListGroup
-                handleClick={this.handleListGroupClick}
+                onItemSelect={this.handleListGroupClick}
+                selectedItem={this.state.selectedRepre}
                 itemList={this.state.listaRepresentantes}
                 paginaActual={this.state.paginaActual}
                 itemsPerPage={this.state.itemsPerPage}
