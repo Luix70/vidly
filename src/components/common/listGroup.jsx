@@ -8,7 +8,14 @@ class ListGroup extends Component {
   };
 
   render() {
-    const { itemList, handleClick, paginaActual, itemsPerPage } = this.props;
+    const {
+      itemList,
+      handleClick,
+      paginaActual,
+      itemsPerPage,
+      itemId,
+      itemValue
+    } = this.props;
 
     const itemsToShow = paginate(itemList, paginaActual, itemsPerPage);
 
@@ -29,13 +36,10 @@ class ListGroup extends Component {
           {itemsToShow.map(item => (
             <li
               onClick={() => handleClick(item)}
-              key={item.codrep}
+              key={item[itemId]}
               className="list-group-item d-flex justify-content-between align-items-center menu-lateral"
             >
-              {item.nombre}
-              <span className="badge badge-primary badge-pill">
-                {item.totalClientes}
-              </span>
+              {item[itemValue]}
             </li>
           ))}
         </ul>
