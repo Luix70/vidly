@@ -129,3 +129,15 @@
   /* visibility: hidden; */
   background: #d6d8db !important;
 }
+
+.listGroupHeader {
+  color: navy;
+  font-size: 150%;
+  font-weight: bolder;
+}
+
+.listGroupFooter {
+  color: navy;
+  font-size: 150%;
+  font-weight: bolder;
+}

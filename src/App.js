@@ -12,10 +12,10 @@ class App extends Component {
     listaRepresentantes: [],
     paginaActual: 1,
     itemsPerPage: 10,
-    selectedRepre: 0
+    selectedRepre: -1
   };
   handleListGroupClick = repre => {
-    console.log(repre);
+    // console.log(repre);
     this.setState({
       resultConsulta: getClientes(repre),
       selectedRepre: repre.codrep

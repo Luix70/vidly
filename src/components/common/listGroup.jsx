@@ -20,7 +20,11 @@ class ListGroup extends Component {
       selectedItem
     } = this.props;
 
-    const itemsToShow = paginate(itemList, paginaActual, itemsPerPage);
+    const itemsToShow = [
+      { codrep: 0, nombre: "Seleccionar Todo" },
+      ...paginate(itemList, paginaActual, itemsPerPage),
+      { codrep: -1, nombre: "Borrar Selección" }
+    ];
 
     return (
       <React.Fragment>
@@ -28,21 +32,21 @@ class ListGroup extends Component {
           className="list-group list-group-flush  "
           style={{ cursor: "pointer" }}
         >
-          <li
-            onClick={() => onItemSelect(0)} // item es un objeto
-            key={0}
-            className={this.state.defaultItemClass}
-            style={{ fontSize: "1.1rem", fontWeight: "bolder" }}
-          >
-            Ver Todos
-          </li>
           {itemsToShow.map(item => {
             return (
               <li
                 onClick={() => onItemSelect(item)}
                 key={item[itemId]}
                 className={
-                  selectedItem === item[itemId]
+                  item[itemId] === 0
+                    ? selectedItem === 0
+                      ? this.state.defaultItemClass + " listGroupHeader active "
+                      : this.state.defaultItemClass + " listGroupHeader"
+                    : item[itemId] === -1
+                    ? selectedItem === -1
+                      ? this.state.defaultItemClass + " listGroupFooter active"
+                      : this.state.defaultItemClass + " listGroupFooter"
+                    : selectedItem === item[itemId]
                     ? this.state.defaultItemClass + " active"
                     : this.state.defaultItemClass
                 }

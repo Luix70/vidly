@@ -1,7 +1,7 @@
 import _ from "lodash";
 export default function getClientes(repre) {
 
-    if (repre === undefined || repre === 0) return clientes;
+    if (repre === undefined || repre.codrep === 0) return clientes;
 
     var fclientes = {...clientes}
     //console.log (clientes.representantes.filter(item => repre.codrep === item.codrep))
