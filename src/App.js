@@ -56,7 +56,7 @@ class App extends Component {
                 itemList={this.state.listaRepresentantes}
                 paginaActual={this.state.paginaActual}
                 itemsPerPage={this.state.itemsPerPage}
-                itemID="codrep" //identificador del elemento
+                itemId="codrep" //identificador del elemento
                 itemValue="nombre" // valor que se mostrará
               />
             </div>

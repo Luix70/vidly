@@ -48,4 +48,9 @@ class ListGroup extends Component {
   }
 }
 
+ListGroup.defaultProps = {
+  itemId: "_id",
+  itemValue: "name"
+};
+
 export default ListGroup;
