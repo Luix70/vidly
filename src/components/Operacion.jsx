@@ -1,5 +1,5 @@
 import React from "react";
-import Linea from "./Linea";
+import Linea from "./linea";
 // al ser una SFC no se requiere importar Component
 const Operacion = ({ documento: doc }) => {
   return (

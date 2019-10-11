@@ -1,6 +1,6 @@
 import React from "react";
 // al ser una SFC no se requiere importar Component
-import Operacion from "./Operacion";
+import Operacion from "./operacion";
 const Cliente = ({ cliente: cli }) => {
   return (
     <React.Fragment>

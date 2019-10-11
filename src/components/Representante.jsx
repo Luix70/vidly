@@ -1,5 +1,5 @@
 import React from "react";
-import Cliente from "./Cliente";
+import Cliente from "./cliente";
 const Representante = ({ repres }) => {
   var listaclientes = repres.clientes;
   return (
