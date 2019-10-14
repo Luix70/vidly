@@ -6,11 +6,10 @@ const Representante = ({ repres, onSort, sortColumn }) => {
   const listaclientes = repres.clientes;
   const ordenarPor = sortColumn.path;
   const orden = sortColumn.order;
-  const nombreRepre = repres.nombre;
 
-  console.log(
-    `ordenamos los clientes del representante ${nombreRepre} por la columna ${ordenarPor} (${orden})`
-  );
+  // console.log(
+  //   `ordenamos los clientes del representante ${nombreRepre} por la columna ${ordenarPor} (${orden})`
+  // );
 
   const listaOrdenada = _.orderBy(listaclientes, [ordenarPor], [orden]);
   return (
