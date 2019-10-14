@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import paginate from "../utils/paginate";
-
+import _ from "lodash";
 class ListGroup extends Component {
   state = {
     itemList: [],
@@ -19,10 +19,10 @@ class ListGroup extends Component {
       itemValue,
       selectedItem
     } = this.props;
-
+    const itemsOrdenados = _.orderBy(itemList, ["nombre"], ["asc"]);
     const itemsToShow = [
       { codrep: 0, nombre: "Seleccionar Todo" },
-      ...paginate(itemList, paginaActual, itemsPerPage),
+      ...paginate(itemsOrdenados, paginaActual, itemsPerPage),
       { codrep: -1, nombre: "Borrar Selección" }
     ];
 

@@ -13,7 +13,7 @@ class App extends Component {
     paginaActual: 1,
     itemsPerPage: 10,
     selectedRepre: -1,
-    sortColumn: { path: "Cod", order: "asc" }
+    sortColumn: { path: "codigo", order: "asc" }
   };
   handleListGroupClick = repre => {
     // console.log(repre);

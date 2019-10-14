@@ -12,6 +12,8 @@ const Representante = ({ repres, onSort, sortColumn }) => {
   // );
 
   const listaOrdenada = _.orderBy(listaclientes, [ordenarPor], [orden]);
+  const ordenIcon = "fa fa-sort-" + orden;
+  console.log(ordenarPor, orden);
   return (
     <React.Fragment>
       <div className="row encab-representante">
@@ -21,12 +23,17 @@ const Representante = ({ repres, onSort, sortColumn }) => {
         <thead className="encab-representante">
           <tr>
             <th onClick={() => onSort("codigo")}>
+              {ordenarPor === "codigo" ? <i className={ordenIcon}></i> : null}{" "}
               <span className="sortable">Cod</span>
             </th>
             <th onClick={() => onSort("rzs")}>
+              {ordenarPor === "rzs" ? <i className={ordenIcon}></i> : null}
               <span className="sortable">Cliente</span>
             </th>
             <th onClick={() => onSort("totalDocumentos")}>
+              {ordenarPor === "totalDocumentos" ? (
+                <i className={ordenIcon}></i>
+              ) : null}{" "}
               <span className="sortable">Docs</span>
             </th>
             <th>&nbsp;</th>
