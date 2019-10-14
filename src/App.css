@@ -112,7 +112,9 @@
 
 .encab-representante {
   background-color: #d6d8db !important;
-  color: black;
+  color: navy;
+  padding-left: 1em;
+  border-style: none;
 }
 
 .list-group {
@@ -140,4 +142,8 @@
   color: navy;
   font-size: 150%;
   font-weight: bolder;
+}
+
+.sortable {
+  cursor: pointer;
 }

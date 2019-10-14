@@ -12,7 +12,8 @@ class App extends Component {
     listaRepresentantes: [],
     paginaActual: 1,
     itemsPerPage: 10,
-    selectedRepre: -1
+    selectedRepre: -1,
+    sortColumn: { path: "Cod", order: "asc" }
   };
   handleListGroupClick = repre => {
     // console.log(repre);
@@ -26,6 +27,19 @@ class App extends Component {
     this.setState({ paginaActual: page });
   };
 
+  handleSortCustomers = header => {
+    this.setState({
+      sortColumn: {
+        path: header,
+        order:
+          this.state.sortColumn.path === header
+            ? this.state.sortColumn.order === "asc"
+              ? "desc"
+              : "asc"
+            : "asc"
+      }
+    });
+  };
   componentDidMount() {
     this.setState({
       listaRepresentantes: getRepres()
@@ -73,7 +87,12 @@ class App extends Component {
               <span>&nbsp;</span>
             ) : (
               this.state.resultConsulta.representantes.map(repre => (
-                <Representante key={repre.codrep} repres={repre} />
+                <Representante
+                  key={repre.codrep}
+                  repres={repre}
+                  onSort={this.handleSortCustomers}
+                  sortColumn={this.state.sortColumn}
+                />
               ))
             )}
           </div>
