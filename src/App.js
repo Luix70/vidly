@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
 import Representante from "./components/representante";
-import getClientes, { getRepres } from "./services/fakeClientes";
+//import getClientes, { getRepres } from "./services/fakeClientes";
+import getClientes, { getRepres } from "./services/clientes";
 import NavBar from "./components/navBar";
 import ListGroup from "./components/common/listGroup";
 import Pagination from "./components/common/pagination";
@@ -15,10 +16,10 @@ class App extends Component {
     selectedRepre: -1,
     sortColumn: { path: "codigo", order: "asc" }
   };
-  handleListGroupClick = repre => {
+  handleListGroupClick = async repre => {
     // console.log(repre);
     this.setState({
-      resultConsulta: getClientes(repre),
+      resultConsulta: await getClientes(repre),
       selectedRepre: repre.codrep
     });
   };
@@ -40,9 +41,9 @@ class App extends Component {
       }
     });
   };
-  componentDidMount() {
+  async componentDidMount() {
     this.setState({
-      listaRepresentantes: getRepres()
+      listaRepresentantes: await getRepres()
     });
   }
 
