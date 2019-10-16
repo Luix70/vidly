@@ -6,8 +6,17 @@ const Linea = ({ linea }) => {
       <tr>
         <td className="celdaCoart">{linea.coart}</td>
         <td className="celdaDesc">{linea.descripcion}</td>
-        <td className="celdaPrecio">
-          {Number.parseFloat(linea.precio).toFixed(2)}€
+        <td
+          className={
+            linea.cantidad === 1 || linea.cantidad === 0
+              ? "celdaPrecio"
+              : "celdaPrecio multiple"
+          }
+        >
+          {linea.cantidad === 1 ? "" : linea.cantidad + " x "}
+          {linea.precio !== 0
+            ? Number.parseFloat(linea.precio).toFixed(2) + " €"
+            : ""}
         </td>
       </tr>
       <tr>

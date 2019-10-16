@@ -36,7 +36,7 @@ async function getData(repre) {
   // If cache is older than 20 min we retrieve another batch
   if (
     cachedData !== null &&
-    Math.abs(new Date(cachedData.FechaCache) - Date.now()) / (1000 * 60) < 20
+    Math.abs(new Date(cachedData.FechaCache) - Date.now()) / (1000 * 60) < 15
   ) {
     //console.log("cached " + new Date(cachedData.FechaCache));
     return cachedData;
@@ -45,7 +45,7 @@ async function getData(repre) {
     liveData.FechaCache = Date.now();
     localStorage.setItem("cachedData", JSON.stringify(liveData));
 
-    //console.log("retrieved", new Date(liveData.FechaCache));
+    console.log("retrieved", new Date(liveData.FechaCache));
 
     return liveData;
   }

@@ -81,9 +81,13 @@
 }
 
 .celdaPrecio {
-  width: 3rem;
+  width: 8rem;
   text-align: right;
   color: gray;
+}
+
+.multiple {
+  color: red;
 }
 
 .celdaRef_linea {
