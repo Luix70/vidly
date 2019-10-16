@@ -14,13 +14,16 @@ class App extends Component {
     paginaActual: 1,
     itemsPerPage: 10,
     selectedRepre: -1,
-    sortColumn: { path: "codigo", order: "asc" }
+    sortColumn: { path: "codigo", order: "asc" },
+    FechaConsulta: ""
   };
   handleListGroupClick = async repre => {
     // console.log(repre);
+    const lr = await getClientes(repre);
     this.setState({
-      resultConsulta: await getClientes(repre),
-      selectedRepre: repre.codrep
+      resultConsulta: lr,
+      selectedRepre: repre.codrep,
+      FechaConsulta: lr.FechaConsulta
     });
   };
 
@@ -80,6 +83,9 @@ class App extends Component {
                 itemId="codrep" //identificador del elemento
                 itemValue="nombre" // valor que se mostrará
               />
+            </div>
+            <div className="row">
+              <span>{this.state.FechaConsulta}</span>
             </div>
           </div>
           <div className="col" style={{ backgroundColor: "#d6d8db" }}>
