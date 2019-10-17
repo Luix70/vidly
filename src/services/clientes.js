@@ -31,7 +31,7 @@ async function getData(repre) {
   const nEndPoint =
     apiEndPoint + (repre.codrep === 0 ? "" : "?cr=" + repre.codrep);
 
-  const cachedData = JSON.parse(localStorage.getItem("cachedData"));
+  const cachedData = JSON.parse(sessionStorage.getItem("cachedData"));
 
   // If cache is older than 20 min we retrieve another batch
   if (
@@ -43,7 +43,7 @@ async function getData(repre) {
   } else {
     const { data: liveData } = await axios.get(nEndPoint);
     liveData.FechaCache = Date.now();
-    localStorage.setItem("cachedData", JSON.stringify(liveData));
+    sessionStorage.setItem("cachedData", JSON.stringify(liveData));
 
     console.log("retrieved", new Date(liveData.FechaCache));
 

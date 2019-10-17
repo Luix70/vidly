@@ -84,8 +84,19 @@ class App extends Component {
                 itemValue="nombre" // valor que se mostrará
               />
             </div>
-            <div className="row">
-              <span>{this.state.FechaConsulta}</span>
+            <div style={{ paddingLeft: "2em" }} className="row">
+              {this.state.FechaConsulta === ""
+                ? ""
+                : "Consulta: " +
+                  new Date(this.state.FechaConsulta).toLocaleTimeString()}
+
+              {"  "}
+              {this.state.resultConsulta === null
+                ? ""
+                : "/ Caché: " +
+                  new Date(
+                    this.state.resultConsulta.FechaCache
+                  ).toLocaleTimeString()}
             </div>
           </div>
           <div className="col" style={{ backgroundColor: "#d6d8db" }}>
