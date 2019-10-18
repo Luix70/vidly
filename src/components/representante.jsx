@@ -4,21 +4,45 @@ import _ from "lodash";
 import TableHeader from "./common/tableHeader";
 
 class Representante extends Component {
-  state = {};
-  render() {
-    const { repres, onSort, sortColumn } = this.props;
+  state = {
+    sortColumn: { path: "codigo", order: "asc" }
+  };
 
+  handleSortCustomers = header => {
+    this.setState({
+      sortColumn: {
+        path: header,
+        order:
+          this.state.sortColumn.path === header
+            ? this.state.sortColumn.order === "asc"
+              ? "desc"
+              : "asc"
+            : "asc"
+      }
+    });
+  };
+
+  render() {
+    const { repres } = this.props;
+    const { sortColumn } = this.state;
     const listaclientes = repres.clientes;
-    const ordenarPor = sortColumn.path;
-    const orden = sortColumn.order;
 
     // console.log(
     //   `ordenamos los clientes del representante ${nombreRepre} por la columna ${ordenarPor} (${orden})`
     // );
 
-    const listaOrdenada = _.orderBy(listaclientes, [ordenarPor], [orden]);
-    const ordenIcon = "fa fa-sort-" + orden;
+    const listaOrdenada = _.orderBy(
+      listaclientes,
+      [sortColumn.path],
+      [sortColumn.order]
+    );
 
+    const listaCampos = [
+      { path: "codigo", label: "Cod" },
+      { path: "rzs", label: "Cliente" },
+      { path: "totalDocumentos", label: "Docs" },
+      { path: "dummy", label: " " }
+    ];
     return (
       <React.Fragment>
         <div className="row encab-representante">
@@ -26,17 +50,17 @@ class Representante extends Component {
         </div>
         <table className="table table-dark ">
           <TableHeader
-            ordenarPor={ordenarPor}
-            ordenIcon={ordenIcon}
-            onSort={onSort}
-            listaCampos={["codigo", "rzs", "totalDocumentos", " "]}
-            listaEtiquetas={["Cod", "Cliente", "Docs", ""]}
+            sortColumn={sortColumn}
+            onSort={this.handleSortCustomers}
+            listaCampos={listaCampos}
           />
+
           <tbody>
             {listaOrdenada.map(cli => (
               <Cliente key={cli.codigo} cliente={cli} />
             ))}
           </tbody>
+
           <tfoot>
             <tr className="table-secondary">
               <td colSpan="3">

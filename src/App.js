@@ -9,12 +9,13 @@ class App extends Component {
   state = {
     resultConsulta: null,
     listaRepresentantes: [],
-    sortColumn: { path: "codigo", order: "asc" },
-    FechaConsulta: ""
+    FechaConsulta: "",
+    selectedRepre: -1
   };
   handleListGroupClick = async repre => {
     // console.log(repre);
     const lr = await getClientes(repre);
+
     this.setState({
       resultConsulta: lr,
       selectedRepre: repre.codrep,
@@ -22,19 +23,6 @@ class App extends Component {
     });
   };
 
-  handleSortCustomers = header => {
-    this.setState({
-      sortColumn: {
-        path: header,
-        order:
-          this.state.sortColumn.path === header
-            ? this.state.sortColumn.order === "asc"
-              ? "desc"
-              : "asc"
-            : "asc"
-      }
-    });
-  };
   async componentDidMount() {
     this.setState({
       listaRepresentantes: await getRepres()
@@ -62,6 +50,7 @@ class App extends Component {
                 itemList={this.state.listaRepresentantes}
                 itemId="codrep" //identificador del elemento
                 itemValue="nombre" // valor que se mostrará
+                selectedItem={this.state.selectedRepre}
               />
             </div>
             <div style={{ paddingLeft: "2em" }} className="row">

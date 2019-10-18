@@ -9,8 +9,7 @@ class ListGroup extends Component {
     defaultItemClass:
       "list-group-item d-flex justify-content-between align-items-center menu-lateral",
     paginaActual: 1,
-    itemsPerPage: 10,
-    selectedRepre: -1
+    itemsPerPage: 9
   };
 
   handlePageClicked = page => {
@@ -26,6 +25,7 @@ class ListGroup extends Component {
       selectedItem
     } = this.props;
 
+    //console.log("listgroup " + selectedItem);
     const itemsOrdenados = _.orderBy(itemList, ["nombre"], ["asc"]);
     const itemsToShow = [
       { codrep: 0, nombre: "Seleccionar Todo" },
@@ -69,7 +69,9 @@ class ListGroup extends Component {
 
               return (
                 <li
-                  onClick={() => onItemSelect(item)}
+                  onClick={() => {
+                    onItemSelect(item);
+                  }}
                   key={item[itemId]}
                   className={claseItem}
                 >
