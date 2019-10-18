@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
 import Representante from "./components/representante";
-//import getClientes, { getRepres } from "./services/fakeClientes";
 import getClientes, { getRepres } from "./services/clientes";
 import NavBar from "./components/navBar";
 import ListGroup from "./components/common/listGroup";
