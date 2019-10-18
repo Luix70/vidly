@@ -33,23 +33,25 @@ class ListGroup extends Component {
           style={{ cursor: "pointer" }}
         >
           {itemsToShow.map(item => {
+            // determinamos qué clase aplicar al item
+            const claseItem =
+              item[itemId] === 0 // es el item 0 (encabezado) ?
+                ? selectedItem === 0 // es el seleccionado ?
+                  ? this.state.defaultItemClass + " listGroupHeader active " // le aplicamos el estilo correspondiente
+                  : this.state.defaultItemClass + " listGroupHeader"
+                : item[itemId] === -1 // es el ítem -1 (pie)
+                ? selectedItem === -1 // es el seleccionado ?
+                  ? this.state.defaultItemClass + " listGroupFooter active" // le aplicamos el estilo correspondiente
+                  : this.state.defaultItemClass + " listGroupFooter"
+                : selectedItem === item[itemId] // // es el seleccionado y no es ni encabezado ni pie?
+                ? this.state.defaultItemClass + " active" // le aplicamos el estilo correspondiente
+                : this.state.defaultItemClass;
+
             return (
               <li
                 onClick={() => onItemSelect(item)}
                 key={item[itemId]}
-                className={
-                  item[itemId] === 0
-                    ? selectedItem === 0
-                      ? this.state.defaultItemClass + " listGroupHeader active "
-                      : this.state.defaultItemClass + " listGroupHeader"
-                    : item[itemId] === -1
-                    ? selectedItem === -1
-                      ? this.state.defaultItemClass + " listGroupFooter active"
-                      : this.state.defaultItemClass + " listGroupFooter"
-                    : selectedItem === item[itemId]
-                    ? this.state.defaultItemClass + " active"
-                    : this.state.defaultItemClass
-                }
+                className={claseItem}
               >
                 {item[itemValue]}
               </li>
