@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import Cliente from "./cliente";
+//import Cliente from "./cliente";
 import _ from "lodash";
 import TableHeader from "./common/tableHeader";
+import TableBody from "./common/tableBody";
 
 class Representante extends Component {
   state = {
@@ -54,12 +55,7 @@ class Representante extends Component {
             onSort={this.handleSortCustomers}
             listaCampos={listaCampos}
           />
-
-          <tbody>
-            {listaOrdenada.map(cli => (
-              <Cliente key={cli.codigo} cliente={cli} />
-            ))}
-          </tbody>
+          <TableBody listaElementos={repres.clientes} />
 
           <tfoot>
             <tr className="table-secondary">
