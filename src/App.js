@@ -9,7 +9,6 @@ class App extends Component {
   state = {
     resultConsulta: null,
     listaRepresentantes: [],
-
     sortColumn: { path: "codigo", order: "asc" },
     FechaConsulta: ""
   };
