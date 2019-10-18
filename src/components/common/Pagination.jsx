@@ -7,6 +7,7 @@ const Pagination = ({ itemCount, currentPage, itemsPerPage, pageClicked }) => {
   const numpages = Math.ceil(itemCount / itemsPerPage);
   const pages = _.range(1, numpages + 1);
 
+  //console.log(itemCount, currentPage, itemsPerPage, pageClicked);
   return (
     <nav aria-label="Page navigation example">
       <ul className="pagination">

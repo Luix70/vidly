@@ -36,7 +36,7 @@ async function getData(repre) {
   // If cache is older than 20 min we retrieve another batch
   if (
     cachedData !== null &&
-    Math.abs(new Date(cachedData.FechaCache) - Date.now()) / (1000 * 60) < 15
+    Math.abs(new Date(cachedData.FechaCache) - Date.now()) / (1000 * 60) < 10
   ) {
     //console.log("cached " + new Date(cachedData.FechaCache));
     return cachedData;

@@ -5,15 +5,12 @@ import Representante from "./components/representante";
 import getClientes, { getRepres } from "./services/clientes";
 import NavBar from "./components/navBar";
 import ListGroup from "./components/common/listGroup";
-import Pagination from "./components/common/pagination";
 
 class App extends Component {
   state = {
     resultConsulta: null,
     listaRepresentantes: [],
-    paginaActual: 1,
-    itemsPerPage: 10,
-    selectedRepre: -1,
+
     sortColumn: { path: "codigo", order: "asc" },
     FechaConsulta: ""
   };
@@ -25,10 +22,6 @@ class App extends Component {
       selectedRepre: repre.codrep,
       FechaConsulta: lr.FechaConsulta
     });
-  };
-
-  handlePageClicked = page => {
-    this.setState({ paginaActual: page });
   };
 
   handleSortCustomers = header => {
@@ -66,20 +59,9 @@ class App extends Component {
         <div className="row">
           <div className="col-3 smallprint">
             <div className="row">
-              <Pagination
-                itemCount={this.state.listaRepresentantes.length}
-                currentPage={this.state.paginaActual}
-                itemsPerPage={this.state.itemsPerPage}
-                pageClicked={this.handlePageClicked}
-              />
-            </div>
-            <div className="row">
               <ListGroup
                 onItemSelect={this.handleListGroupClick}
-                selectedItem={this.state.selectedRepre}
                 itemList={this.state.listaRepresentantes}
-                paginaActual={this.state.paginaActual}
-                itemsPerPage={this.state.itemsPerPage}
                 itemId="codrep" //identificador del elemento
                 itemValue="nombre" // valor que se mostrará
               />
