@@ -13,6 +13,7 @@ const Pagination = ({ itemCount, currentPage, itemsPerPage, pageClicked }) => {
       <ul className="pagination">
         <li
           key="0"
+          
           className={"page-item " + (currentPage === 1 ? "disabled" : "")}
           onClick={() =>
             currentPage > 1 ? pageClicked(currentPage - 1) : null

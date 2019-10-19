@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-//import Cliente from "./cliente";
 import _ from "lodash";
 import TableHeader from "./common/tableHeader";
-import TableBody from "./common/tableBody";
+import TableBody from "./common/tableBody.jsx";
 
 class Representante extends Component {
   state = {
