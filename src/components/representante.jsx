@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import _ from "lodash";
-import TableHeader from "./common/tableHeader";
-import TableBody from "./common/tableBody.jsx";
+import Table from "./common/table"
 import Cliente from "./cliente"
 class Representante extends Component {
   state = {
@@ -48,19 +47,15 @@ class Representante extends Component {
 
     return (
       <React.Fragment>
-        <div className="row encab-representante">
-          <span>Representante: {repres.nombre}</span>
-        </div>
-        <table className="table table-dark ">
-          <TableHeader
-            sortColumn={sortColumn}
-            onSort={this.handleSortCustomers}
-            listaCampos={listaCampos}
-          />
-          <TableBody listaElementos={listaOrdenada} listaCampos = {listaCampos}  campoClave={"codigo"}/>
-        
-        </table>
+      
+      <div className="row encab-representante">
+      <span>Representante: {repres.nombre}</span>
+      </div>
+
+      <Table listaOrdenada={listaOrdenada} listaCampos = {listaCampos}  campoClave={"codigo"} sortColumn = {sortColumn} onSort={this.handleSortCustomers}/>
+      
       </React.Fragment>
+
     );
   }
 }
