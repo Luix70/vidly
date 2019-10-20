@@ -1,21 +1,20 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 class NavBar extends Component {
   render() {
-
     return (
       <nav className="navbar navbar-dark bg-dark">
-        <Link  className="navbar-brand" to="/">
+        <Link className="navbar-brand" to="/">
           INDESAN
-         </Link>
-        <Link  className="navbar-brand" to="/blog">Blog</Link>
-
-        <Link  className="navbar-brand" to="/ar">
-          Área Reservada
-          
         </Link>
-       
+        <Link className="navbar-brand" to="/blog">
+          Blog
+        </Link>
+
+        <Link className="navbar-brand" to="/ar">
+          Área Reservada
+        </Link>
+
         <form className="form-inline">
           <input
             className="form-control mr-sm-2 "

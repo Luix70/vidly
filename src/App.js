@@ -13,7 +13,7 @@ class App extends Component {
         <div className="content">
           <Switch>
             <Route path="/ar" component={AreaReservada} />
-            <Route path="/blog" component={Blog} />
+            <Route path="/blog" render={(props)=><Blog user = "Luis" {...props}/>} />
             <Route path="/"  component={Home} />
           </Switch>
         </div>
