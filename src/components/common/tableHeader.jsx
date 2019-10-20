@@ -1,6 +1,6 @@
 import React from "react";
 const TableHeader = ({ sortColumn, onSort, listaCampos }) => {
-  console.log(sortColumn, onSort, listaCampos)
+  
   const ordenIcon = "fa fa-sort-" + sortColumn.order  ;
   return (
     <thead className="encab-representante">
