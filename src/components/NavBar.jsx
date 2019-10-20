@@ -1,41 +1,21 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from "react";
-
+import {Link} from "react-router-dom";
 class NavBar extends Component {
   render() {
-    const {
-      totalRepresentantes,
-      totalClientes,
-      totalPedidos,
-      totalFacturas
-    } = this.props;
+
     return (
       <nav className="navbar navbar-dark bg-dark">
-        <a className="navbar-brand" href="#">
-          Representantes
-          <span className="badge badge-pill badge-secondary">
-            {totalRepresentantes}
-          </span>
-        </a>
-        <a className="navbar-brand" href="#">
-          Clientes
-          <span className="badge badge-pill badge-secondary">
-            {totalClientes}
-          </span>
-        </a>
+        <Link  className="navbar-brand" to="/">
+          INDESAN
+         </Link>
+        <Link  className="navbar-brand" to="/blog">Blog</Link>
 
-        <a className="navbar-brand" href="#">
-          Pedidos
-          <span className="badge badge-pill badge-secondary">
-            {totalPedidos}
-          </span>
-        </a>
-        <a className="navbar-brand" href="#">
-          Importe
-          <span className="badge badge-pill badge-secondary">
-            {totalFacturas}
-          </span>
-        </a>
+        <Link  className="navbar-brand" to="/ar">
+          Área Reservada
+          
+        </Link>
+       
         <form className="form-inline">
           <input
             className="form-control mr-sm-2 "
