@@ -3,22 +3,22 @@ import React from "react";
 import Operacion from "./operacion";
 const Cliente = ({ cliente: cli }) => {
   return (
-    <React.Fragment>
+    <table>
+      <tbody>
       <tr className="bg-primary" key={cli.codigo}>
         <td className="codCliente">
           <strong>{cli.codigo}</strong>
         </td>
         <td>
           <em>
-            {" "}
-            {cli.rzs} ( {cli.poblacion})
+                        {cli.rzs} ( {cli.poblacion})
           </em>
         </td>
         <td className="numped">Docs: {cli.totalDocumentos}</td>
         <td className="numped">&nbsp;</td>
       </tr>
       <tr key={cli.codigo + "-ops"}>
-        <td colSpan="4">
+        <td colSpan="4" style={{width:"100%"}}>
           <table className="table table-dark table-sm table-borderless">
             <tbody>
               {cli.documentos.map(doc => (
@@ -28,7 +28,8 @@ const Cliente = ({ cliente: cli }) => {
           </table>
         </td>
       </tr>
-    </React.Fragment>
+      </tbody>
+    </table>
   );
 };
 

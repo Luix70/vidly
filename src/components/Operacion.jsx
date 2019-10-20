@@ -3,7 +3,7 @@ import Linea from "./linea";
 // al ser una SFC no se requiere importar Component
 const Operacion = ({ documento: doc }) => {
   return (
-    <React.Fragment>
+      <React.Fragment  >
       <tr>
         <td className="celdaDocumento">
           <span className={"tipodoc tipodoc-" + doc.tipodoc}>
@@ -33,7 +33,7 @@ const Operacion = ({ documento: doc }) => {
           </table>
         </td>
       </tr>
-    </React.Fragment>
+      </React.Fragment>
   );
 };
 

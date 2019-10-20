@@ -6,7 +6,7 @@ const TableHeader = ({ sortColumn, onSort, listaCampos }) => {
       <tr>
         {listaCampos.map(campo => {
           return (
-            <th key={campo.path} onClick={() => onSort(campo.path)}>
+            <th key={campo.path} onClick={() => onSort(campo.path) } style ={{width: campo.width}} > 
               {sortColumn.path === campo.path ? (
                 <i className={ordenIcon}></i>
               ) : null}{" "}

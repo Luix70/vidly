@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import _ from "lodash";
 import TableHeader from "./common/tableHeader";
 import TableBody from "./common/tableBody.jsx";
-
+import Cliente from "./cliente"
 class Representante extends Component {
   state = {
     sortColumn: { path: "codigo", order: "asc" }
@@ -38,15 +38,18 @@ class Representante extends Component {
     );
 
     const listaCampos = [
-      { path: "codigo", label: "Cod" },
-      { path: "rzs", label: "Cliente" },
-      { path: "totalDocumentos", label: "Docs" },
-      { path: "dummy", label: " " }
+      { path: "codigo", label: "Cod",content : (item) => <Cliente key={item.codigo} cliente={item} /> , colSpan: "4" , width:"15%"},
+      { path: "rzs", label: "Cliente" , colSpan: "0" ,  width:"60%" },
+      { path: "totalDocumentos", label: "Docs" , colSpan: "0" , width:"15%" },
+      { path: "dummy", label: " " , colSpan: "0" , width:"10%"}
     ];
+
+ 
+
     return (
       <React.Fragment>
         <div className="row encab-representante">
-          <h3>{repres.nombre}</h3>
+          <span>Representante: {repres.nombre}</span>
         </div>
         <table className="table table-dark ">
           <TableHeader
@@ -54,19 +57,8 @@ class Representante extends Component {
             onSort={this.handleSortCustomers}
             listaCampos={listaCampos}
           />
-          <TableBody listaElementos={repres.clientes} />
-
-          <tfoot>
-            <tr className="table-secondary">
-              <td colSpan="3">
-                {listaOrdenada.length === 0 && "No hay clientes "}
-                {listaOrdenada.length > 0 &&
-                  "Hay " + listaOrdenada.length + " clientes"}
-              </td>
-
-              <td className="numped">&nbsp;</td>
-            </tr>
-          </tfoot>
+          <TableBody listaElementos={listaOrdenada} listaCampos = {listaCampos}  campoClave={"codigo"}/>
+        
         </table>
       </React.Fragment>
     );
