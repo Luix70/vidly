@@ -15,11 +15,7 @@ class App extends Component {
         <div className="content">
           <Switch>
             <Route path="/ar" component={AreaReservada} />
-
             <Route path="/blog/:mes?/:anno?" render={rutaBlog} />
-            
-            
-
             <Route path="/" component={Home} />
           </Switch>
         </div>
