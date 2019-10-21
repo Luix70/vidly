@@ -21,7 +21,6 @@ class App extends Component {
             <Route path="/not-found" component={NotFound} />
             <Redirect from="/mensajes" to="/blog?sortBy=oldest&verified=true" />
             <Route exact path="/" component={Home} />
-
             <Redirect to="/not-found" />
           </Switch>
         </div>
