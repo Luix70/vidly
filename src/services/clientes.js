@@ -1,7 +1,8 @@
 import _ from "lodash";
 import axios from "axios";
 
-const apiEndPoint = "http://indesan.ddns.net:52608/JData.asmx/JPedidos";
+const apiEndPoint =
+  "http://indesan.ddns.net:52608/JData.asmx/JPedidos?user=Luis&password=140670";
 
 export default async function getClientes(repre) {
   var result = await getData(repre);
@@ -31,7 +32,7 @@ async function getData(repre) {
   const nEndPoint =
     apiEndPoint + (repre.codrep === 0 ? "" : "?cr=" + repre.codrep);
 
-  const cachedData = JSON.parse(sessionStorage.getItem("cachedData"));
+  const cachedData = JSON.parse(localStorage.getItem("cachedData"));
 
   // If cache is older than 20 min we retrieve another batch
   if (
@@ -43,7 +44,7 @@ async function getData(repre) {
   } else {
     const { data: liveData } = await axios.get(nEndPoint);
     liveData.FechaCache = Date.now();
-    sessionStorage.setItem("cachedData", JSON.stringify(liveData));
+    localStorage.setItem("cachedData", JSON.stringify(liveData));
 
     console.log("retrieved", new Date(liveData.FechaCache));
 
