@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import _ from "lodash";
-import Table from "./common/table"
-import Cliente from "./cliente"
+import Table from "./common/table";
+import Cliente from "./cliente";
 class Representante extends Component {
   state = {
     sortColumn: { path: "codigo", order: "asc" }
@@ -37,25 +37,32 @@ class Representante extends Component {
     );
 
     const listaCampos = [
-      { path: "codigo", label: "Cod",content : (item) => <Cliente key={item.codigo} cliente={item} /> , colSpan: "4" , width:"15%"},
-      { path: "rzs", label: "Cliente" , colSpan: "0" ,  width:"60%" },
-      { path: "totalDocumentos", label: "Docs" , colSpan: "0" , width:"15%" },
-      { path: "dummy", label: " " , colSpan: "0" , width:"10%"}
+      {
+        path: "codigo",
+        label: "Cod",
+        content: item => <Cliente key={item.codigo} cliente={item} />,
+        colSpan: "4",
+        width: "15%"
+      },
+      { path: "rzs", label: "Cliente", colSpan: "0", width: "60%" },
+      { path: "totalDocumentos", label: "Docs", colSpan: "0", width: "15%" },
+      { path: "dummy", label: " ", colSpan: "0", width: "10%" }
     ];
-
- 
 
     return (
       <React.Fragment>
-      
-      <div className="row encab-representante">
-      <span>Representante: {repres.nombre}</span>
-      </div>
+        <div className="row encab-representante">
+          <span>Representante: {repres.nombre}</span>
+        </div>
 
-      <Table listaOrdenada={listaOrdenada} listaCampos = {listaCampos}  campoClave={"codigo"} sortColumn = {sortColumn} onSort={this.handleSortCustomers}/>
-      
+        <Table
+          listaOrdenada={listaOrdenada}
+          listaCampos={listaCampos}
+          campoClave={"codigo"}
+          sortColumn={sortColumn}
+          onSort={this.handleSortCustomers}
+        />
       </React.Fragment>
-
     );
   }
 }

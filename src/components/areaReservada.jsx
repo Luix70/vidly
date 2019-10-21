@@ -1,33 +1,34 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import ListGroup from "./common/listGroup";
 import Representante from "./representante";
 import getClientes, { getRepres } from "../services/clientes";
 
 class AreaReservada extends Component {
-    state = {
-        resultConsulta: null,
-        listaRepresentantes: [],
-        FechaConsulta: "",
-        selectedRepre: -1
-      };
-      handleListGroupClick = async repre => {
-        // console.log(repre);
-        const lr = await getClientes(repre);
-    
-        this.setState({
-          resultConsulta: lr,
-          selectedRepre: repre.codrep,
-          FechaConsulta: lr.FechaConsulta
-        });
-      };
-    
-      async componentDidMount() {
-        this.setState({
-          listaRepresentantes: await getRepres()
-        });
-      }
-    render() { 
-        return ( <div className="row">
+  state = {
+    resultConsulta: null,
+    listaRepresentantes: [],
+    FechaConsulta: "",
+    selectedRepre: -1
+  };
+  handleListGroupClick = async repre => {
+    // console.log(repre);
+    const lr = await getClientes(repre);
+
+    this.setState({
+      resultConsulta: lr,
+      selectedRepre: repre.codrep,
+      FechaConsulta: lr.FechaConsulta
+    });
+  };
+
+  async componentDidMount() {
+    this.setState({
+      listaRepresentantes: await getRepres()
+    });
+  }
+  render() {
+    return (
+      <div className="row">
         <div className="col-3 smallprint">
           <div className="row">
             <ListGroup
@@ -43,7 +44,7 @@ class AreaReservada extends Component {
               ? ""
               : "Consulta: " +
                 new Date(this.state.FechaConsulta).toLocaleTimeString()}
-    
+
             {"  "}
             {this.state.resultConsulta === null
               ? ""
@@ -68,8 +69,9 @@ class AreaReservada extends Component {
             ))
           )}
         </div>
-      </div> );
-    }
+      </div>
+    );
+  }
 }
- 
+
 export default AreaReservada;
