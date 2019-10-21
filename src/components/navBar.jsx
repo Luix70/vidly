@@ -15,6 +15,10 @@ class NavBar extends Component {
           Área Reservada
         </Link>
 
+        <Link className="navbar-brand" to="/dashboard">
+          Administracion
+        </Link>
+
         <form className="form-inline">
           <input
             className="form-control mr-sm-2 "
