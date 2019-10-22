@@ -6,8 +6,7 @@ class LoginForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const errors = this.validate();
-
-    this.setState({ errors });
+    this.setState({ errors: errors || {} });
     if (errors) return console.log("No enviado:" + JSON.stringify(errors));
     console.log("submitted ");
   };
@@ -32,7 +31,8 @@ class LoginForm extends Component {
   };
 
   render() {
-    const { account } = this.state;
+    const { account, errors } = this.state;
+
     return (
       <div className="formContainer">
         <h1>Login</h1>
@@ -42,12 +42,14 @@ class LoginForm extends Component {
             onChange={this.handleChange}
             name={"username"}
             label={"Usuario"}
+            error={errors.username}
           />
           <Input
             value={account.password}
             onChange={this.handleChange}
             name={"password"}
             label={"Contraseña"}
+            error={errors.password}
           />
 
           <button className="btn btn-primary">Validar</button>
