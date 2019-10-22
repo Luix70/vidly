@@ -1,26 +1,48 @@
 import React, { Component } from "react";
 import Input from "./common/input";
+import Joi from "@hapi/joi";
+
 class LoginForm extends Component {
   state = { account: { username: "", password: "" }, errors: {} };
+
+  schema = Joi.object({
+    username: Joi.string()
+      .alphanum()
+      .min(8)
+      .max(30)
+      .required()
+      .label("Usuario"),
+    password: Joi.string()
+      .alphanum()
+      .min(8)
+      .max(30)
+      .required()
+      .label("Contraseña")
+  });
 
   handleSubmit = e => {
     e.preventDefault();
     const errors = this.validate();
     this.setState({ errors: errors || {} });
-    if (errors) return console.log("No enviado:" + JSON.stringify(errors));
+    if (errors) return console.log("No enviado");
     //procedimiento as seguir si no hay errores. p.ej: reenvio al área reservada
 
     this.props.history.replace("/ar");
   };
 
   validate = () => {
-    const errors = {};
-    //dummy error implementation
-    if (this.state.account.username.trim() === "")
-      errors.username = "El campo Usuario no puede estar vacio";
-    if (this.state.account.password.trim() === "")
-      errors.password = "El campo Contraseña no puede estar vacio";
-    return Object.keys(errors).length === 0 ? null : errors;
+    const result = this.schema.validate(this.state.account, {
+      abortEarly: false
+    });
+
+    if (!result.error) return null;
+
+    //el objeto error contiene un array details que vamos a mapear
+    const errors = {}; //en principio, es un objeto vacio
+
+    for (let item of result.error.details) errors[item.path[0]] = item.message;
+    //item.path es un array con un solo elemento, por eso obtenemos su valos así
+    return errors;
   };
 
   validateProperty = input => {
