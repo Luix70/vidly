@@ -151,3 +151,8 @@
 .sortable {
   cursor: pointer;
 }
+.formContainer {
+  width: 50%;
+  min-width: 15em;
+  margin: 10em auto;
+}

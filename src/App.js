@@ -7,17 +7,19 @@ import Blog from "./components/blog";
 import Home from "./components/home";
 import NotFound from "./components/notFound";
 import Dashboard from "./components/admin/dashboard";
+import LoginForm from "./components/loginForm";
 
 class App extends Component {
   render() {
     const rutaBlog = props => <Blog user="Luis" {...props} />;
 
     return (
-      <main style={{ backgroundColor: "#ddd" }}>
+      <main>
         <NavBar />
         <div className="content">
           <Switch>
             <Route path="/ar" component={AreaReservada} />
+            <Route path="/login" component={LoginForm} />
             <Route path="/blog/:mes?/:anno?" render={rutaBlog} />
             <Route path="/not-found" component={NotFound} />
             <Route path="/dashboard" component={Dashboard} />

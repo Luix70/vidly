@@ -18,6 +18,9 @@ class NavBar extends Component {
         <Link className="navbar-brand" to="/dashboard">
           Administracion
         </Link>
+        <Link className="navbar-brand" to="/login">
+          Login
+        </Link>
 
         <form className="form-inline">
           <input
