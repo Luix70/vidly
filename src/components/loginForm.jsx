@@ -1,12 +1,25 @@
 import React, { Component } from "react";
 import Input from "./common/input";
 class LoginForm extends Component {
-  state = { account: { username: "", password: "" } };
+  state = { account: { username: "", password: "" }, errors: {} };
 
   handleSubmit = e => {
     e.preventDefault();
+    const errors = this.validate();
 
+    this.setState({ errors });
+    if (errors) return console.log("No enviado:" + JSON.stringify(errors));
     console.log("submitted ");
+  };
+
+  validate = () => {
+    const errors = {};
+    //dummy error implementation
+    if (this.state.account.username.trim() === "")
+      errors.username = "El campo Usuario no puede estar vacio";
+    if (this.state.account.password.trim() === "")
+      errors.password = "El campo Contraseña no puede estar vacio";
+    return Object.keys(errors).length === 0 ? null : errors;
   };
 
   handleChange = ({ currentTarget: input }) => {
