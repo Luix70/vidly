@@ -5,7 +5,7 @@ import Joi from "@hapi/joi";
 class LoginForm extends Component {
   state = { account: { username: "", password: "" }, errors: {} };
 
-  schema = Joi.object({
+  objSchema = {
     username: Joi.string()
       .alphanum()
       .min(8)
@@ -18,7 +18,9 @@ class LoginForm extends Component {
       .max(30)
       .required()
       .label("Contraseña")
-  });
+  };
+
+  schema = Joi.object(this.objSchema);
 
   handleSubmit = e => {
     e.preventDefault();
@@ -46,20 +48,18 @@ class LoginForm extends Component {
   };
 
   validateProperty = input => {
-    if (input.name === "username") {
-      if (input.value.trim() === "")
-        return "El campo Usuario no puede estar vacio";
-      if (input.value.trim().length < 8)
-        return "El campo Usuario ha de tener 8 caracterers o más";
+    const { name, value } = input;
+    //debemos devolver un mensaje de error si input.value no cumple con los requisitos
+    //para ello debemos definir un subobjeto solo con esa propiedad y un subEsquema solo para esa propiedad
+    const obj = { [name]: value }; //[name] es una funcionalidad de ES6 para construri objetos: Computed Property name syntax
+    //es equivalente a const obj = {} ; obj[name]= value;
 
-      // otras comprobaciones pertinentes
-    }
+    const objSubSchema = { [name]: this.objSchema[name] };
+    const subSchema = Joi.object(objSubSchema);
 
-    if (input.name === "password") {
-      if (input.value.trim() === "")
-        return "El campo Contraseña no puede estar vacio";
-      // otras comprobaciones pertinentes
-    }
+    const result = subSchema.validate(obj);
+
+    return result.error ? result.error.details[0].message : null;
   };
 
   handleChange = ({ currentTarget: input }) => {
@@ -103,7 +103,9 @@ class LoginForm extends Component {
             error={errors.password}
           />
 
-          <button className="btn btn-primary">Validar</button>
+          <button disabled={this.validate()} className="btn btn-primary">
+            Validar
+          </button>
         </form>
       </div>
     );
