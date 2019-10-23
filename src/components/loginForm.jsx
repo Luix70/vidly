@@ -7,7 +7,7 @@ class LoginForm extends Form {
   objSchema = {
     username: Joi.string()
       .alphanum()
-      .min(8)
+      .min(5)
       .max(30)
       .required()
       .label("Usuario"),

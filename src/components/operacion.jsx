@@ -1,5 +1,6 @@
 import React from "react";
 import Linea from "./linea";
+import { Link } from "react-router-dom";
 // al ser una SFC no se requiere importar Component
 const Operacion = ({ documento: doc }) => {
   return (
@@ -9,7 +10,9 @@ const Operacion = ({ documento: doc }) => {
           <span className={"tipodoc tipodoc-" + doc.tipodoc}>
             {doc.tipodoc}
           </span>{" "}
-          {doc.codigodoc}
+          <Link to={`/scans/${doc.tipodoc}/${doc.codigodoc}`}>
+            {doc.codigodoc}
+          </Link>
         </td>
         <td className="celdaFecha">
           Fecha:

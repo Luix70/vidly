@@ -8,6 +8,7 @@ import NotFound from "./components/notFound";
 import Dashboard from "./components/admin/dashboard";
 import LoginForm from "./components/loginForm";
 import RegisterForm from "./components/registerForm";
+import Scans from "./components/scans";
 import "./App.css";
 
 class App extends Component {
@@ -25,6 +26,7 @@ class App extends Component {
             <Route path="/not-found" component={NotFound} />
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/registro" component={RegisterForm} />
+            <Route path="/scans/:td/:cd" component={Scans} />
             <Redirect from="/mensajes" to="/blog?sortBy=oldest&verified=true" />
             <Route exact path="/" component={Home} />
             <Redirect to="/not-found" />
