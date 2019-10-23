@@ -22,6 +22,10 @@ class NavBar extends Component {
           Login
         </Link>
 
+        <Link className="navbar-brand" to="/registro">
+          Registro
+        </Link>
+
         <form className="form-inline">
           <input
             className="form-control mr-sm-2 "
