@@ -156,3 +156,19 @@
   min-width: 15em;
   margin: 10em auto;
 }
+
+.cardContainer {
+  padding: 2em 5% 0 5%;
+  margin: 2em 0 0 5%;
+  text-align: center;
+}
+
+.cardContainer h5 {
+  font-size: 100%;
+}
+
+.cardContainer img {
+  height: 192px;
+  width: auto;
+  margin: 0 auto;
+}

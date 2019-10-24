@@ -1,8 +1,7 @@
 import _ from "lodash";
 import axios from "axios";
 
-const apiEndPoint =
-  "http://indesan.ddns.net:52608/JData.asmx/JOps?user=Luis&password=140670";
+const apiEndPoint = "http://indesan.ddns.net:52608/JData.asmx";
 
 export default async function getClientes(repre) {
   var result = await getData(repre);
@@ -30,7 +29,9 @@ export async function getRepres() {
 
 async function getData(repre) {
   const nEndPoint =
-    apiEndPoint + (repre.codrep === 0 ? "" : "?cr=" + repre.codrep);
+    apiEndPoint +
+    "/JOps?user=Luis&password=140670" +
+    (repre.codrep === 0 ? "" : "?cr=" + repre.codrep);
 
   const cachedData = JSON.parse(sessionStorage.getItem("cachedData"));
 
