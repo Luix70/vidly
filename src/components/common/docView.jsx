@@ -22,7 +22,7 @@ class DocView extends Component {
             onClick={() => onClick(ruta, tipo)}
             className="btn btn-primary"
           >
-            Descargar
+            Mostrar
           </button>
         </div>
       </div>
