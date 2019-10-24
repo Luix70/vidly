@@ -5,7 +5,7 @@ class DocView extends Component {
   render() {
     const { tipo, ruta, onClick } = this.props;
     return (
-      <div className="card" style={{ width: "12rem" }}>
+      <div className="card" style={{ width: "11rem" }}>
         <img
           src={
             ruta.substring(ruta.length - 3, ruta.length) === "pdf"
@@ -22,7 +22,7 @@ class DocView extends Component {
             onClick={() => onClick(ruta, tipo)}
             className="btn btn-primary"
           >
-            Descargar
+            Mostrar
           </button>
         </div>
       </div>

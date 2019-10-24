@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import getScans from "../services/archivos";
-
+import PDFViewer from "pdf-viewer-reactjs";
 import DocView from "./common/docView";
 
 class Scans extends Component {
@@ -17,6 +17,25 @@ class Scans extends Component {
 
     const { cd, td } = this.state;
 
+    this.setState({
+      rutaPDF:
+        apiEndPoint +
+        "/JTransferScan?ruta=" +
+        ruta +
+        "&cd=" +
+        cd +
+        "&td=" +
+        td +
+        "&tipoArchivo=" +
+        tipo
+    });
+  };
+
+  handleDown = (ruta, tipo) => {
+    const apiEndPoint = "http://indesan.ddns.net:52608/JData.asmx";
+
+    const { cd, td } = this.state;
+
     window.location.href =
       apiEndPoint +
       "/JTransferScan?ruta=" +
@@ -29,18 +48,37 @@ class Scans extends Component {
       tipo;
   };
 
-  state = { scans: [], cd: "", td: "", ta: "" };
+  state = { scans: [], cd: "", td: "", ta: "", rutaPDF: "" };
+
   render() {
     return (
-      <div className="cardContainer  row">
-        {this.state.scans.map(scan => (
-          <DocView
-            key={scan.numerador}
-            tipo={scan.TipoImagen}
-            ruta={scan.ruta + "\\" + scan.documento}
-            onClick={this.handleClick}
-          ></DocView>
-        ))}
+      <div className="d-flex">
+        <div className="cardContainer  col-2">
+          {this.state.scans.map(scan => (
+            <DocView
+              key={scan.numerador}
+              tipo={scan.TipoImagen}
+              ruta={scan.ruta + "\\" + scan.documento}
+              onClick={this.handleClick}
+            ></DocView>
+          ))}
+        </div>
+        <div className="cardContainer col-10">
+          {this.state.rutaPDF === "" ? null : (
+            <PDFViewer
+              document={{
+                url: this.state.rutaPDF
+              }}
+            />
+          )}
+          <div className="cardContainer col-10">
+            <button
+              onClick={(() => this.handleDown(this.state.rutaPDF), "test")}
+            >
+              Descargar
+            </button>
+          </div>
+        </div>
       </div>
     );
   }
