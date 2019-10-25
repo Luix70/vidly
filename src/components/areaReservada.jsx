@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import ListGroup from "./common/listGroup";
-import Representante from "./representante";
+
 import getClientes, { getRepres } from "../services/clientes";
+import ListaRepresentantes from "./listaRepresentantes";
+import MenuRepresentantes from "./menuRepresentantes";
 
 class AreaReservada extends Component {
   state = {
@@ -26,49 +27,22 @@ class AreaReservada extends Component {
       listaRepresentantes: await getRepres()
     });
   }
+
   render() {
     return (
       <div className="row">
-        <div className="col-3 smallprint">
-          <div className="row">
-            <ListGroup
-              onItemSelect={this.handleListGroupClick}
-              itemList={this.state.listaRepresentantes}
-              itemId="codrep" //identificador del elemento
-              itemValue="nombre" // valor que se mostrará
-              selectedItem={this.state.selectedRepre}
-            />
-          </div>
-          <div style={{ paddingLeft: "2em" }} className="row">
-            {this.state.FechaConsulta === ""
-              ? ""
-              : "Consulta: " +
-                new Date(this.state.FechaConsulta).toLocaleTimeString()}
-
-            {"  "}
-            {this.state.resultConsulta === null
-              ? ""
-              : "/ Caché: " +
-                new Date(
-                  this.state.resultConsulta.FechaCache
-                ).toLocaleTimeString()}
-          </div>
-        </div>
-        <div className="col" style={{ backgroundColor: "#d6d8db" }}>
-          {" "}
-          {this.state.resultConsulta === null ? (
-            <span>&nbsp;</span>
-          ) : (
-            this.state.resultConsulta.representantes.map(repre => (
-              <Representante
-                key={repre.codrep}
-                repres={repre}
-                onSort={this.handleSortCustomers}
-                sortColumn={this.state.sortColumn}
-              />
-            ))
-          )}
-        </div>
+        <MenuRepresentantes
+          onItemSelect={this.handleListGroupClick}
+          listaRepresentantes={this.state.listaRepresentantes}
+          selectedRepre={this.state.selectedRepre}
+          FechaConsulta={this.state.FechaConsulta}
+          FechaCache={
+            this.state.resultConsulta
+              ? this.state.resultConsulta.FechaCache
+              : ""
+          }
+        />
+        <ListaRepresentantes resultConsulta={this.state.resultConsulta} />
       </div>
     );
   }
