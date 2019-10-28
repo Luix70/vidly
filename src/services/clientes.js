@@ -1,5 +1,5 @@
 import _ from "lodash";
-import axios from "axios";
+import httpService from "./httpService";
 
 const apiEndPoint = "http://indesan.ddns.net:52608/JData.asmx";
 
@@ -43,7 +43,7 @@ async function getData(repre) {
     //console.log("cached " + new Date(cachedData.FechaCache));
     return cachedData;
   } else {
-    const { data: liveData } = await axios.get(nEndPoint);
+    const { data: liveData } = await httpService.get(nEndPoint);
     liveData.FechaCache = Date.now();
     sessionStorage.setItem("cachedData", JSON.stringify(liveData));
 
