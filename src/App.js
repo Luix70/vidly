@@ -9,7 +9,9 @@ import Dashboard from "./components/admin/dashboard";
 import LoginForm from "./components/loginForm";
 import RegisterForm from "./components/registerForm";
 import Scans from "./components/scans";
+import { ToastContainer } from "react-toastify";
 import "./App.css";
+import "react-toastify/dist/ReactToastify.css";
 
 class App extends Component {
   render() {
@@ -17,6 +19,7 @@ class App extends Component {
 
     return (
       <main>
+        <ToastContainer />
         <NavBar />
         <div className="content">
           <Switch>
