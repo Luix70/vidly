@@ -6,11 +6,9 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.css";
 import "font-awesome/css/font-awesome.css";
-import * as Sentry from "@sentry/browser";
+import initLogger from "./services/logServices";
 
-Sentry.init({
-  dsn: "https://41619563761d49c7b78c61af5dfc8bbb@sentry.io/1800383"
-});
+initLogger();
 
 ReactDOM.render(
   <BrowserRouter>

@@ -21,9 +21,13 @@ export async function getRepres() {
   // TODO :  invocar a un metodo que devuelva solamente los representantes
   var result = await getData({ codrep: 0 });
   //console.log("resultRepres", result);
-  return result.representantes.map(repre => {
-    return _.pick(repre, ["codrep", "nombre", "totalClientes"]);
-  });
+  try {
+    return result.representantes.map(repre => {
+      return _.pick(repre, ["codrep", "nombre", "totalClientes"]);
+    });
+  } catch (error) {
+    return {};
+  }
 }
 
 async function getData(repre) {
@@ -42,12 +46,16 @@ async function getData(repre) {
     //console.log("cached " + new Date(cachedData.FechaCache));
     return cachedData;
   } else {
-    const { data: liveData } = await httpService.get(nEndPoint);
-    liveData.FechaCache = Date.now();
-    sessionStorage.setItem("cachedData", JSON.stringify(liveData));
+    try {
+      const { data: liveData } = await httpService.get(nEndPoint);
+      liveData.FechaCache = Date.now();
+      sessionStorage.setItem("cachedData", JSON.stringify(liveData));
 
-    console.log("retrieved", new Date(liveData.FechaCache));
+      console.log("retrieved", new Date(liveData.FechaCache));
 
-    return liveData;
+      return liveData;
+    } catch (error) {
+      return {};
+    }
   }
 }

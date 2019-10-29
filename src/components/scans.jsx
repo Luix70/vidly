@@ -3,7 +3,7 @@ import getScans from "../services/archivos";
 import PDFViewer from "pdf-viewer-reactjs";
 import DocView from "./common/docView";
 import { toast } from "react-toastify";
-
+import config from "../config.json";
 class Scans extends Component {
   componentDidMount = async () => {
     const { cd, td } = this.props.match.params;
@@ -14,13 +14,11 @@ class Scans extends Component {
   };
 
   handleClick = (ruta, tipo) => {
-    const apiEndPoint = "http://indesan.ddns.net:52608/JData.asmx";
-
     const { cd, td } = this.state;
 
     this.setState({
       rutaPDF:
-        apiEndPoint +
+        config.apiEndPoint +
         "/JTransferScan?ruta=" +
         ruta +
         "&cd=" +
@@ -32,7 +30,7 @@ class Scans extends Component {
     });
 
     window.location.href =
-      apiEndPoint +
+      config.apiEndPoint +
       "/JTransferScan?ruta=" +
       ruta +
       "&cd=" +
@@ -42,7 +40,7 @@ class Scans extends Component {
       "&tipoArchivo=" +
       tipo;
 
-    toast("Archivo descargado. Revisa las descargas de tu navegador");
+    toast.success("Archivo descargado. Revisa las descargas de tu navegador");
   };
 
   state = { scans: [], cd: "", td: "", ta: "", rutaPDF: "" };
