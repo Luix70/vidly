@@ -1,7 +1,6 @@
 import _ from "lodash";
 import httpService from "./httpService";
-
-const apiEndPoint = "http://indesan.ddns.net:52608/JData.asmx";
+import config from "../config.json";
 
 export default async function getClientes(repre) {
   var result = await getData(repre);
@@ -29,7 +28,7 @@ export async function getRepres() {
 
 async function getData(repre) {
   const nEndPoint =
-    apiEndPoint +
+    config.apiEndPoint +
     "/JOps?user=Luis&password=140670" +
     (repre.codrep === 0 ? "" : "?cr=" + repre.codrep);
 
