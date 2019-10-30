@@ -33,12 +33,12 @@ export async function getRepres() {
 async function getData(repre) {
   const nEndPoint =
     config.apiEndPoint +
-    "/JOps?user=Luis&password=140670" +
+    "/JOps?user=luis@indesan.com&password=Indesan_140670" +
     (repre.codrep === 0 ? "" : "?cr=" + repre.codrep);
 
   const cachedData = JSON.parse(sessionStorage.getItem("cachedData"));
 
-  // If cache is older than 20 min we retrieve another batch
+  // If cache is older than 25 min we retrieve another batch
   if (
     cachedData !== null &&
     Math.abs(new Date(cachedData.FechaCache) - Date.now()) / (1000 * 60) < 25

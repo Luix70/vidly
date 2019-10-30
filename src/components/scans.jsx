@@ -15,6 +15,16 @@ class Scans extends Component {
 
   handleClick = (ruta, tipo) => {
     const { cd, td } = this.state;
+    window.location.href =
+      config.apiEndPoint +
+      "/JTransferScan?ruta=" +
+      ruta +
+      "&cd=" +
+      cd +
+      "&td=" +
+      td +
+      "&tipoArchivo=" +
+      tipo;
 
     this.setState({
       rutaPDF:
@@ -28,17 +38,6 @@ class Scans extends Component {
         "&tipoArchivo=" +
         tipo
     });
-
-    window.location.href =
-      config.apiEndPoint +
-      "/JTransferScan?ruta=" +
-      ruta +
-      "&cd=" +
-      cd +
-      "&td=" +
-      td +
-      "&tipoArchivo=" +
-      tipo;
 
     toast.success("Archivo descargado. Revisa las descargas de tu navegador");
   };

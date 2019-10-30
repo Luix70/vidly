@@ -1,18 +1,22 @@
 import React from "react";
 import Joi from "@hapi/joi";
 import Form from "./common/form";
+import http from "../services/httpService";
+import { apiEndPoint3 } from "../config.json";
+
 class LoginForm extends Form {
   state = { data: { username: "", password: "" }, errors: {} };
 
   objSchema = {
     username: Joi.string()
-      .alphanum()
-      .min(5)
-      .max(30)
+      .email({
+        minDomainSegments: 2,
+        tlds: { allow: ["com", "net", "es", "fr", "uk", "de", "org", "*"] }
+      })
       .required()
-      .label("Usuario"),
+      .label("e-mail"),
     password: Joi.string()
-      .alphanum()
+
       .min(8)
       .max(30)
       .required()
@@ -20,7 +24,16 @@ class LoginForm extends Form {
   };
   schema = Joi.object(this.objSchema);
 
-  doSubmit = () => {
+  doSubmit = async () => {
+    console.log(apiEndPoint3 + "login/authenticate/", this.state.data);
+    const { data: token } = await http.post(
+      apiEndPoint3 + "login/authenticate/",
+      this.state.data
+    );
+    console.log(token);
+    sessionStorage.removeItem("cachedData");
+    sessionStorage.removeItem("apiToken");
+    sessionStorage.setItem("apiToken", token);
     this.props.history.replace("/ar");
   };
 

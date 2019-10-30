@@ -1,4 +1,5 @@
 {
   "apiEndPoint2": "http://indesan.ddns.net:52608/JData.asmx",
-  "apiEndPoint": "http://localhost:52608/JData.asmx"
+  "apiEndPoint": "http://localhost:52608/JData.asmx",
+  "apiEndPoint3": "http://localhost:52608/api/"
 }
