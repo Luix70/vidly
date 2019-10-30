@@ -34,7 +34,7 @@ class LoginForm extends Form {
     sessionStorage.removeItem("cachedData");
     sessionStorage.removeItem("apiToken");
     sessionStorage.setItem("apiToken", token);
-    this.props.history.replace("/ar");
+    window.location = "/ar";
   };
 
   render() {

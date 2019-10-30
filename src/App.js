@@ -10,17 +10,26 @@ import LoginForm from "./components/loginForm";
 import RegisterForm from "./components/registerForm";
 import Scans from "./components/scans";
 import { ToastContainer } from "react-toastify";
+import jwtDecode from "jwt-decode";
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
 
 class App extends Component {
+  state = {};
+  componentDidMount() {
+    try {
+      const jwt = sessionStorage.getItem("apiToken");
+      const payload = jwtDecode(jwt);
+      this.setState({ NombreUsuario: payload.NombreUsuario });
+    } catch (error) {}
+  }
   render() {
     const rutaBlog = props => <Blog user="Luis" {...props} />;
 
     return (
       <main>
         <ToastContainer />
-        <NavBar />
+        <NavBar NombreUsuario={this.state.NombreUsuario} />
         <div className="content">
           <Switch>
             <Route path="/ar" component={AreaReservada} />
