@@ -5,7 +5,7 @@ axios.interceptors.response.use(null, error => {
   const expectedError =
     error.response &&
     error.response.status === 404 &&
-    error.response.status < 500;
+    error.response.status <= 500;
   //   … rutina global para tratar errores
   if (!expectedError) {
     console.log("Logging the error");

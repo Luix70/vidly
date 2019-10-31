@@ -25,12 +25,12 @@ class LoginForm extends Form {
   schema = Joi.object(this.objSchema);
 
   doSubmit = async () => {
-    console.log(apiEndPoint3 + "login/authenticate/", this.state.data);
+    //console.log(apiEndPoint3 + "login/authenticate/", this.state.data);
     const { data: token } = await http.post(
       apiEndPoint3 + "login/authenticate/",
       this.state.data
     );
-    console.log(token);
+    //console.log(token);
     sessionStorage.removeItem("cachedData");
     sessionStorage.removeItem("apiToken");
     sessionStorage.setItem("apiToken", token);

@@ -3,7 +3,7 @@ import httpService from "./httpService";
 import config from "../config.json";
 
 export default async function getClientes(repre) {
-  var result = await getData(repre);
+  var result = await getData();
 
   var fclientes = { ...result };
 
@@ -19,22 +19,20 @@ export default async function getClientes(repre) {
 
 export async function getRepres() {
   // TODO :  invocar a un metodo que devuelva solamente los representantes
-  var result = await getData({ codrep: 0 });
+  var result = await getData();
   //console.log("resultRepres", result);
   try {
     return result.representantes.map(repre => {
       return _.pick(repre, ["codrep", "nombre", "totalClientes"]);
     });
   } catch (error) {
+    console.log("error getrepres", error);
     return {};
   }
 }
 
-async function getData(repre) {
-  const nEndPoint =
-    config.apiEndPoint +
-    "/JOps?user=luis@indesan.com&password=Indesan_140670" +
-    (repre.codrep === 0 ? "" : "?cr=" + repre.codrep);
+async function getData() {
+  const nEndPoint = config.apiEndPoint3 + "customers/GetAll";
 
   const cachedData = JSON.parse(sessionStorage.getItem("cachedData"));
 
@@ -47,14 +45,19 @@ async function getData(repre) {
     return cachedData;
   } else {
     try {
-      const { data: liveData } = await httpService.get(nEndPoint);
-      liveData.FechaCache = Date.now();
-      sessionStorage.setItem("cachedData", JSON.stringify(liveData));
+      const token = sessionStorage.getItem("apiToken");
 
-      console.log("retrieved", new Date(liveData.FechaCache));
+      const { data: liveData } = await httpService.get(nEndPoint, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
 
-      return liveData;
+      const nData = JSON.parse(liveData);
+      nData.FechaCache = Date.now();
+      sessionStorage.setItem("cachedData", JSON.stringify(nData));
+
+      return nData;
     } catch (error) {
+      console.log("error getData", error);
       return {};
     }
   }
