@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 class NavBar extends Component {
+  handleLogout = () => {
+    sessionStorage.removeItem("apiToken");
+    window.location = "/";
+  };
   render() {
     console.log(this.props);
     const { NombreUsuario } = this.props;
@@ -38,7 +42,7 @@ class NavBar extends Component {
               {NombreUsuario}
             </Link>
 
-            <Link className="navbar-brand" to="/logout">
+            <Link onClick={this.handleLogout} className="navbar-brand" to="/">
               Logout
             </Link>
           </React.Fragment>
