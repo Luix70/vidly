@@ -6,10 +6,11 @@ class ListaRepresentantes extends Component {
   }
   render() {
     const { resultConsulta } = this.props;
-    console.log(
-      "renderizada lista de representantes " +
-        (resultConsulta ? resultConsulta.representantes.length : 0)
-    );
+
+    // console.log(
+    //   "renderizada lista de representantes " +
+    //     (resultConsulta ? resultConsulta.representantes.length : 0)
+    //);
     return (
       <div className="col" style={{ backgroundColor: "#d6d8db" }}>
         {" "}

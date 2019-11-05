@@ -9,10 +9,9 @@ class AreaReservada extends Component {
     resultConsulta: null,
     listaRepresentantes: [],
     FechaConsulta: "",
-    selectedRepre: -1
+    selectedRepre: 0
   };
   handleListGroupClick = async repre => {
-    // console.log(repre);
     const lr = await getClientes(repre);
 
     this.setState({
@@ -26,6 +25,8 @@ class AreaReservada extends Component {
     this.setState({
       listaRepresentantes: await getRepres()
     });
+
+    this.handleListGroupClick({ codrep: 0 });
   }
 
   render() {
