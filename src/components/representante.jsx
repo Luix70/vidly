@@ -24,8 +24,8 @@ class Representante extends Component {
   render() {
     const { repres } = this.props;
     const { sortColumn } = this.state;
-    const listaclientes = repres.clientes;
-
+    const listaclientes = repres.Clientes;
+    //console.log(repres.Clientes);
     // console.log(
     //   `ordenamos los clientes del representante ${nombreRepre} por la columna ${ordenarPor} (${orden})`
     // );

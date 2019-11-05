@@ -4,23 +4,19 @@ import config from "../config.json";
 
 export default async function getClientes(repre) {
   var result = await getData();
+  if (repre.codrep === 0) return result;
+  var reps = [...result.representantes];
 
-  var fclientes = { ...result };
+  result.representantes = reps.filter(rep => rep.codrep === repre.codrep);
+  result.totalRepresentantes = result.representantes.length;
 
-  fclientes.representantes = [
-    ...result.representantes.filter(
-      item => repre.codrep === item.codrep || repre.codrep === 0
-    )
-  ];
-
-  // console.log(repre.codrep);
-  return fclientes;
+  return result;
 }
 
 export async function getRepres() {
   // TODO :  invocar a un metodo que devuelva solamente los representantes
   var result = await getData();
-  //console.log("resultRepres", result);
+
   try {
     return result.representantes.map(repre => {
       return _.pick(repre, ["codrep", "nombre", "totalClientes"]);
