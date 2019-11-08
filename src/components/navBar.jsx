@@ -4,7 +4,7 @@ import httpService from "../services/httpService";
 import { apiEndPoint3 } from "../config.json";
 
 class NavBar extends Component {
-  handleLogout = () => {
+  handleLogout = history => {
     sessionStorage.removeItem("apiToken");
     sessionStorage.removeItem("cachedData");
     window.location = "/";
